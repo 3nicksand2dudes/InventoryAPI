@@ -1,17 +1,10 @@
+// index.js
+const serverless = require('serverless-http');
 const express = require('express')
 const app = express()
-const cors = require('cors')
-const bodyParser = require('body-parser')
 
-app.use(cors())
-app.use(bodyParser.json())
-
-app.get('/test', (req, res) => {
-    res.json({"test": "test"})
+app.get('/', function (req, res) {
+  res.send('Hello World!')
 })
 
-const PORT = process.env.PORT || 3001
-
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`)
-})
+module.exports.handler = serverless(app);
