@@ -2,11 +2,30 @@
 
 service: Inventory-API
 
+custom:
+  inventoryTableName: 'inentory-table-${self:provider.stage}'
+  warehouseTableName: 'warehouse-table-${self:provider.stage}'
+
 provider:
   name: aws
   runtime: nodejs12.x
   stage: dev
   region: eu-north-1
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource:
+        - { "Fn::GetAtt": ["InventoryDynamoDBTable", "Arn" ] }
+        - { "Fn::GetAtt": ["WarehouseDynamoDBTable", "Arn" ] }
+  environment:
+    INVENTORY_TABLE: ${self:custom.inventoryTableName}
+    WAREHOUSE_TABLE: ${self:custom.warehouseTableName}
 
 functions:
   app:
@@ -14,3 +33,37 @@ functions:
     events:
       - http: ANY /
       - http: 'ANY {proxy+}'
+
+resources:
+  Resources:
+    InventoryDynamoDBTable:
+      Type: 'AWS::DynamoDB::Table'
+      Properties:
+        AttributeDefinitions:
+          -
+            AttributeName: itemId
+            AttributeType: S
+        KeySchema:
+          -
+            AttributeName: itemId
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        TableName: ${self:custom.inventoryTableName}
+
+    WarehouseDynamoDBTable:
+      Type: 'AWS::DynamoDB::Table'
+      Properties:
+        AttributeDefinitions:
+          -
+            AttributeName: warehouseId
+            AttributeType: S
+        KeySchema:
+          -
+            AttributeName: warehouseId
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        TableName: ${self:custom.warehouseTableName}
