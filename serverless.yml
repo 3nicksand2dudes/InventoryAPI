@@ -3,8 +3,8 @@
 service: Inventory-API
 
 custom:
-  inventoryTableName: 'inentory-table-${self:provider.stage}'
-  warehouseTableName: 'warehouse-table-${self:provider.stage}'
+  inventoryTableName: 'inentory-table-0.2-${self:provider.stage}'
+  siteTableName: 'site-table-0.4-${self:provider.stage}'
 
 provider:
   name: aws
@@ -22,17 +22,46 @@ provider:
         - dynamodb:DeleteItem
       Resource:
         - { "Fn::GetAtt": ["InventoryDynamoDBTable", "Arn" ] }
-        - { "Fn::GetAtt": ["WarehouseDynamoDBTable", "Arn" ] }
+        - { "Fn::GetAtt": ["SiteDynamoDBTable", "Arn" ] }
   environment:
     INVENTORY_TABLE: ${self:custom.inventoryTableName}
-    WAREHOUSE_TABLE: ${self:custom.warehouseTableName}
+    SITE_TABLE: ${self:custom.siteTableName}
 
 functions:
-  app:
-    handler: index.handler
+  getInventory:
+    handler: inventory/get.get
     events:
-      - http: ANY /
-      - http: 'ANY {proxy+}'
+      - http:
+          path: inventory/{id}
+          method: get
+          cors: true
+
+  createInventory:
+    handler: inventory/create.create
+    events:
+      - http:
+          path: inventory
+          method: post
+          cors: true
+
+  getSite:
+    handler: site/get.get
+    events:
+      - http:
+          path: site/{id}
+          method: get
+          cors: true
+    environment:
+      region: "${self:provider.region}"
+
+  createSite:
+    handler: site/create.create
+    events:
+      - http:
+          path: site
+          method: post
+          cors: true
+
 
 resources:
   Resources:
@@ -41,29 +70,29 @@ resources:
       Properties:
         AttributeDefinitions:
           -
-            AttributeName: itemId
+            AttributeName: id
             AttributeType: S
         KeySchema:
           -
-            AttributeName: itemId
+            AttributeName: id
             KeyType: HASH
         ProvisionedThroughput:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1
         TableName: ${self:custom.inventoryTableName}
 
-    WarehouseDynamoDBTable:
+    SiteDynamoDBTable:
       Type: 'AWS::DynamoDB::Table'
       Properties:
         AttributeDefinitions:
           -
-            AttributeName: warehouseId
+            AttributeName: id
             AttributeType: S
         KeySchema:
           -
-            AttributeName: warehouseId
+            AttributeName: id
             KeyType: HASH
         ProvisionedThroughput:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1
-        TableName: ${self:custom.warehouseTableName}
+        TableName: ${self:custom.siteTableName}
