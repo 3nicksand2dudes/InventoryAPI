@@ -1,0 +1,47 @@
+#WIP (Work In Progress)
+openapi: 3.0.0
+info:
+  title: Inventory API
+  description: An API for managing the Inventory Databases.
+
+servers:
+  - url: https://ykold98ku7.execute-api.eu-north-1.amazonaws.com/dev
+    description: The base URL.
+
+paths:
+  #/inventory
+    #get:
+  /inventory/{id}
+    get:
+      summary: Returns an Inventory Item based on id.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Unique id for fetching Item information.
+          schema:
+            type : string
+            #allowReserved: true
+      responses:
+        '200':
+          description: A JSON object of Inventory Item.
+          content:
+            application/json:
+              schema: 
+                type: array
+                items: 
+                  type: string
+        #todo: add more responses
+  /inventory
+    post:
+      summary: Creates a new Inventory Item.
+      responses:
+        requestBody:
+          required: true
+          content:
+            #application/json:
+              #schema:
+                #$ref: '#/components/schemas/User'
+      responses:
+        '201':
+          description: Created
