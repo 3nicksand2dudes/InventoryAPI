@@ -1,5 +1,5 @@
 #WIP (Work In Progress)
-openapi: 3.0.0
+openapi: 3.0.2
 info:
   title: Inventory API
   description: An API for managing the Inventory Databases.
@@ -11,6 +11,7 @@ servers:
 paths:
   #/inventory
     #get:
+      #summary: Returns all Inventory Items 
   /inventory/{id}
     get:
       summary: Returns an Inventory Item based on id.
@@ -27,11 +28,24 @@ paths:
           description: A JSON object of Inventory Item.
           content:
             application/json:
-              schema: 
-                type: array
-                items: 
+            schema:
+              type: object
+              properties:
+                itemId:
                   type: string
-        #todo: add more responses
+                  example: item id
+                amount:
+                  type: string
+                  example: 42
+                site:
+                  type: string
+                  example: random string
+        '400':
+          description: The specified user ID is invalid (not a number).
+        '404':
+          description: A user with the specified ID was not found.
+        default:
+          description: Unexpected error
   /inventory
     post:
       summary: Creates a new Inventory Item.
