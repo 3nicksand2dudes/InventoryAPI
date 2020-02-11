@@ -41,9 +41,9 @@ paths:
                   type: string
                   example: random string
         '400':
-          description: The specified user ID is invalid (not a number).
+          description: The specified Item ID is invalid (not a number).
         '404':
-          description: A user with the specified ID was not found.
+          description: An item with the specified ID was not found.
         default:
           description: Unexpected error
   /inventory
