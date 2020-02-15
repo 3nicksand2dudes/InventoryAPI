@@ -25,9 +25,9 @@ Base url, Not routed anywhere
 
 ```json
 {
-  "itemId": "20043d4d-a807-49db-a571-7e1d4ad8f49f", 
+  "modelNumber": "H7", 
   "amount": 42,
-  "site": "5a191cab-d05c-489c-bf57-c40bda8b3c8c"
+  "siteId": "FIN H1"
 }
 ```
 
@@ -36,10 +36,11 @@ Base url, Not routed anywhere
 
 ### Example POST NEW SITE
 
-[https://ykold98ku7.execute-api.eu-north-1.amazonaws.com/dev/site/](https://ykold98ku7.execute-api.eu-north-1.amazonaws.com/dev/site/)
+[https://ykold98ku7.execute-api.eu-north-1.amazonaws.com/dev/site/add](https://ykold98ku7.execute-api.eu-north-1.amazonaws.com/dev/site/add)
 
 ```json
 {
+  "siteId": "FIN_H1",
   "siteName": "Helsinki", 
   "address": "StreetName 42"
 }

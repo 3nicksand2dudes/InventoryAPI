@@ -10,7 +10,7 @@ module.exports.get = (event, context, callback) => {
     const params = {
       TableName:SITE_TABLE,
       Key: {
-        id: event.pathParameters.id,
+        siteId: event.pathParameters.id,
       },
     }
   

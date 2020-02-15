@@ -22,34 +22,37 @@ module.exports.create = (event, context, callback) => {
       })
       return
     }
-    // Check if itemId is an valid uuid
-    else if (!isUuid(data.itemId)) {
-        console.error('Validation Failed')
-        callback(null, {
-          statusCode: 400,
-          headers: { 'Content-Type': 'text/plain' },
-          body: 'Malformatted itemId',
-        })
-        return
+    // Check if modelNumber is an String
+    else if (typeof data.modelNumber !== 'string') {
+      console.error('Validation Failed')
+      callback(null, {
+        statusCode: 400,
+        headers: { 'Content-Type': 'text/plain' },
+        body: '"modelNumber" must be a string',
+      })
+      return
     }
+
+    // TODO Check if modelNumber exists
+
     // Check if site is an valid uuid
-    else if (!isUuid(data.site)) {
-        console.error('Validation Failed')
-        callback(null, {
-          statusCode: 400,
-          headers: { 'Content-Type': 'text/plain' },
-          body: 'Malformatted site id ',
-        })
-        return
+    else if (typeof data.siteId !== 'string') {
+      console.error('Validation Failed')
+      callback(null, {
+        statusCode: 400,
+        headers: { 'Content-Type': 'text/plain' },
+        body: '"siteId" must be a string',
+      })
+      return
     }
 
     const params = {
       TableName: INVENTORY_TABLE,
       Item: {
         id: uuid(),
-        itemId: data.itemId,
+        modelNumber: data.modelNumber,
         amount: data.amount,
-        site: data.site,
+        site: data.siteId,
         deleted: false,
       },
     }

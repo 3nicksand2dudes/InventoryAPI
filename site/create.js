@@ -1,7 +1,8 @@
 'use strict'; // Use Strict mode 
 
 const AWS = require('aws-sdk')
-const { uuid } = require('uuidv4')
+
+const { uuid, isUuid  } = require('uuidv4')
 
 const SITE_TABLE  = process.env.SITE_TABLE
 const dynamoDb = new AWS.DynamoDB.DocumentClient()
@@ -33,11 +34,24 @@ module.exports.create = (event, context, callback) => {
         return
     }
 
+    // Check if siteId is a string
+    if (typeof data.siteId !== 'string') {
+      console.error('Validation Failed')
+      callback(null, {
+          statusCode: 400,
+          headers: { 'Content-Type': 'text/plain' },
+          body: '"id" must be a string',
+      })
+      return
+    }
+
+    // Check if siteId is Unique
+
 
     const params = {
       TableName: SITE_TABLE,
       Item: {
-        id: uuid(),
+        siteId: data.siteId,
         siteName: data.siteName,
         address: data.address,
         deleted: false,
