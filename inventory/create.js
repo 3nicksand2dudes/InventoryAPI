@@ -9,9 +9,7 @@ const dynamoDb = new AWS.DynamoDB.DocumentClient()
 module.exports.create = (event, context, callback) => {
     
     const data = JSON.parse(event.body)
-    
-    // TODO CHECK IF ENTRY EXISTS, IF ITEM AND SITE EXSISTS IN SAME DOCUMENT
-    // VALIDATION FOR DATA INPUT
+  
     // Check if amount is a number
     if (typeof data.amount !== 'number') {
       console.error('Validation Failed')

@@ -2,8 +2,6 @@
 
 const AWS = require('aws-sdk')
 
-const { uuid, isUuid  } = require('uuidv4')
-
 const SITE_TABLE  = process.env.SITE_TABLE
 const dynamoDb = new AWS.DynamoDB.DocumentClient()
 
@@ -11,8 +9,6 @@ module.exports.create = (event, context, callback) => {
     
     const data = JSON.parse(event.body)
 
-    // TODO CHECK IF ENTRY EXISTS, IF ITEM AND SITE EXSISTS IN SAME DOCUMENT
-    // VALIDATION FOR DATA INPUT
     // Check if siteName is a string
     if (typeof data.siteName !== 'string') {
         console.error('Validation Failed')
@@ -45,9 +41,6 @@ module.exports.create = (event, context, callback) => {
       return
     }
 
-    // Check if siteId is Unique
-
-
     const params = {
       TableName: SITE_TABLE,
       Item: {
@@ -56,19 +49,31 @@ module.exports.create = (event, context, callback) => {
         address: data.address,
         deleted: false,
       },
+      ConditionExpression: 'attribute_not_exists(siteId)'
     }
   
     // write the site to the site database
     dynamoDb.put(params, (error) => {
       // handle potential errors
       if (error) {
-        console.error(error)
-        callback(null, {
-          statusCode: error.statusCode || 501,
-          headers: { 'Content-Type': 'text/plain' },
-          body: 'Couldn\'t create the site.',
-        })
-        return
+        if(error.message == 'The conditional request failed'){
+          console.error(error)
+          callback(null, {
+            statusCode: error.statusCode || 501,
+            headers: { 'Content-Type': 'text/plain' },
+            body: 'Couldn\'t create the site. SiteId already exsits',
+          })
+          return
+        }
+        else{
+          console.error(error)
+          callback(null, {
+            statusCode: error.statusCode || 501,
+            headers: { 'Content-Type': 'text/plain' },
+            body: 'Couldn\'t create the site.',
+          })
+          return
+        }
       }
   
       // create a response

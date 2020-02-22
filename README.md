@@ -50,6 +50,18 @@ Base url, Not routed anywhere
 ### Example GET SITE BY ID
 [https://ykold98ku7.execute-api.eu-north-1.amazonaws.com/dev/site/FIN_H1](https://ykold98ku7.execute-api.eu-north-1.amazonaws.com/dev/site/FIN_H1)
 
+**OUTPUT**
+```json
+[
+{
+  "siteId": "FIN_H1",
+  "address": "StreetName 42",
+  "siteName": "Helsinki"
+}
+]
+```
+
+
 ### Example POST NEW SITE
 
 [https://ykold98ku7.execute-api.eu-north-1.amazonaws.com/dev/site/add](https://ykold98ku7.execute-api.eu-north-1.amazonaws.com/dev/site/add)
