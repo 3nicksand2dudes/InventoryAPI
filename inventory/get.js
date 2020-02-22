@@ -5,18 +5,23 @@ const AWS = require('aws-sdk')
 const INVENTORY_TABLE = process.env.INVENTORY_TABLE
 const dynamoDb = new AWS.DynamoDB.DocumentClient()
 
-
 module.exports.get = (event, context, callback) => {
+
+    // Search for items with certain modelNumber
     const params = {
       TableName:INVENTORY_TABLE,
-      Key: {
-        id: event.pathParameters.id,
+      ProjectionExpression: "#mn, site, amount ",
+      FilterExpression: "#mn = :modeln",
+      ExpressionAttributeNames: {
+          "#mn": "modelNumber",
       },
+      ExpressionAttributeValues: {
+           ":modeln": event.pathParameters.id,
+      }
     }
   
-    // TODO MORE SPEFICIF ERROR HANDLING, SUCH AS isuuid()
     // fetch item from the inventory database
-    dynamoDb.get(params, (error, result) => {
+    dynamoDb.scan(params, (error, result) => {
       // handle potential errors
       if (error) {
         console.error(error)
@@ -27,13 +32,23 @@ module.exports.get = (event, context, callback) => {
         })
         return
       }
-  
-      //TODO CHANGE RESPONSE TO NOT SEND EVERYTHING ???
-      // create a response  
-      const response = {
-        statusCode: 200,
-        body: JSON.stringify(result.Item),
+      // If response is empty
+      else if(result.Items.length < 1){
+        callback(null, {
+          statusCode: 404 ,
+          headers: { 'Content-Type': 'text/plain' },
+          body: 'Malformatted modelNumber',
+        })
+        return
       }
-      callback(null, response)
+      else{
+        // create a response  
+        const response = {
+          statusCode: 200,
+          body: JSON.stringify(result.Items),
+        }
+        callback(null, response)
+      }
+
     })
 }

@@ -7,18 +7,34 @@ Base url, Not routed anywhere
 [https://ykold98ku7.execute-api.eu-north-1.amazonaws.com/dev](https://ykold98ku7.execute-api.eu-north-1.amazonaws.com/dev)
 
 ## endpoints:
-  **GET - https://ykold98ku7.execute-api.eu-north-1.amazonaws.com/dev/inventory/{id}**
+  **GET - https://ykold98ku7.execute-api.eu-north-1.amazonaws.com/dev/inventory/{ModelNumber}**
 
   **POST - https://ykold98ku7.execute-api.eu-north-1.amazonaws.com/dev/inventory**
 
-  **GET - https://ykold98ku7.execute-api.eu-north-1.amazonaws.com/dev/site/{id}**
+  **GET - https://ykold98ku7.execute-api.eu-north-1.amazonaws.com/dev/site/{siteId}**
 
-  **POST - https://ykold98ku7.execute-api.eu-north-1.amazonaws.com/dev/site**
+  **POST - https://ykold98ku7.execute-api.eu-north-1.amazonaws.com/dev/site/add**
 
 
 
-### Example GET INVENTORY ITEM BY ID
-[https://ykold98ku7.execute-api.eu-north-1.amazonaws.com/dev/inventory/8157843e-d04b-402a-b04b-057cb0f487ec](https://ykold98ku7.execute-api.eu-north-1.amazonaws.com/dev/inventory/8157843e-d04b-402a-b04b-057cb0f487ec)
+### Example GET INVENTORY ITEMS BY MODELNUMBER
+[https://ykold98ku7.execute-api.eu-north-1.amazonaws.com/dev/inventory/H7](https://ykold98ku7.execute-api.eu-north-1.amazonaws.com/dev/inventory/H7)
+
+**OUTPUT**
+```json
+[
+  {
+    "amount": 45,
+    "modelNumber": "H7",
+    "site": "FIN_H3"
+  },
+  {
+    "amount": 42,
+    "modelNumber": "H7",
+    "site": "FIN_H1"
+  }
+]
+```
 
 ### Example POST NEW ITEM TO INVENTORY
 [https://ykold98ku7.execute-api.eu-north-1.amazonaws.com/dev/inventory/](https://ykold98ku7.execute-api.eu-north-1.amazonaws.com/dev/inventory/)
@@ -32,7 +48,7 @@ Base url, Not routed anywhere
 ```
 
 ### Example GET SITE BY ID
-[https://ykold98ku7.execute-api.eu-north-1.amazonaws.com/dev/site/a5428f4e-a5d1-422e-96b2-9b4c439e7130](https://ykold98ku7.execute-api.eu-north-1.amazonaws.com/dev/site/a5428f4e-a5d1-422e-96b2-9b4c439e7130)
+[https://ykold98ku7.execute-api.eu-north-1.amazonaws.com/dev/site/FIN_H1](https://ykold98ku7.execute-api.eu-north-1.amazonaws.com/dev/site/FIN_H1)
 
 ### Example POST NEW SITE
 
@@ -41,7 +57,7 @@ Base url, Not routed anywhere
 ```json
 {
   "siteId": "FIN_H1",
-  "siteName": "Helsinki", 
-  "address": "StreetName 42"
+  "address": "StreetName 42",
+  "siteName": "Helsinki"
 }
 ```

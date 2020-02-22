@@ -9,12 +9,12 @@ const dynamoDb = new AWS.DynamoDB.DocumentClient()
 module.exports.get = (event, context, callback) => {
     const params = {
       TableName:SITE_TABLE,
+      ProjectionExpression: "siteId, siteName, address",
       Key: {
         siteId: event.pathParameters.id,
       },
     }
   
-    // TODO MORE SPEFICIF ERROR HANDLING, SUCH AS isuuid()
     // fetch site from the site database
     dynamoDb.get(params, (error, result) => {
       // handle potential errors
@@ -27,13 +27,22 @@ module.exports.get = (event, context, callback) => {
         })
         return
       }
-  
-      //TODO CHANGE RESPONSE TO NOT SEND EVERYTHING ???
-      // create a response  
-      const response = {
-        statusCode: 200,
-        body: JSON.stringify(result.Item),
+      if(!result.Item){
+        callback(null, {
+          statusCode: 404 ,
+          headers: { 'Content-Type': 'text/plain' },
+          body: 'Malformatted siteId',
+        })
+        return
       }
-      callback(null, response)
+      else{
+        // create a response  
+        const response = {
+          statusCode: 200,
+          body: JSON.stringify(result.Item),
+        }
+        callback(null, response)
+      }
+      
     })
 }
