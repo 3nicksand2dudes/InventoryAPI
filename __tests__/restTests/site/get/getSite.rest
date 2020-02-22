@@ -1,0 +1,2 @@
+get https://ykold98ku7.execute-api.eu-north-1.amazonaws.com/dev/site/FIN_H1
+Content-Type: application/json
