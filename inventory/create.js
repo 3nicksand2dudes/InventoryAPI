@@ -54,25 +54,67 @@ module.exports.create = (event, context, callback) => {
         deleted: false,
       },
     }
-  
-    // write the item to the inventory database
-    dynamoDb.put(params, (error) => {
+
+    const paramsToCheck = {
+      TableName: INVENTORY_TABLE,
+      ProjectionExpression: "#mn, amount, site",
+      FilterExpression: "#mn = :modeln and #site = :site",
+      ExpressionAttributeNames: {
+          "#mn": "modelNumber",
+          "#site": "site"
+      },
+      ExpressionAttributeValues: {
+           ":modeln": data.modelNumber,
+           ":site": data.siteId
+      }
+    }
+
+    // Check if entry exists
+    dynamoDb.scan(paramsToCheck, (err, res) => {
       // handle potential errors
-      if (error) {
-        console.error(error)
+      if (err) {
+        console.error(err)
         callback(null, {
-          statusCode: error.statusCode || 501,
+          statusCode: err.statusCode || 501,
           headers: { 'Content-Type': 'text/plain' },
           body: 'Couldn\'t create the inventory item.',
         })
         return
       }
-  
-      // create a response
-      const response = {
-        statusCode: 201,
-        body: JSON.stringify(params.Item),
+      else if(res.Items.length > 0){
+        console.error(err)
+        callback(null, {
+          statusCode: 403,
+          headers: { 'Content-Type': 'text/plain' },
+          body: 'Couldn\'t create the inventory item. Entry exists',
+        })
+        return
       }
-      callback(null, response)
+      else {
+        // write the item to the inventory database
+        dynamoDb.put(params, (error) => {
+          // handle potential errors
+          if (error) {
+            console.error(error)
+            callback(null, {
+              statusCode: error.statusCode || 501,
+              headers: { 'Content-Type': 'text/plain' },
+              body: 'Couldn\'t create the inventory item.',
+            })
+            return
+          }
+      
+          // create a response
+          const response = {
+            statusCode: 201,
+            body: JSON.stringify(params.Item),
+          }
+          callback(null, response)
+        })
+
+      }
+
     })
+  
+    
 }
