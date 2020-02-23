@@ -3,7 +3,7 @@
 service: Inventory-API
 
 custom:
-  inventoryTableName: 'inentory-table-0.6-${self:provider.stage}'
+  inventoryTableName: 'inventory-table-0.6-${self:provider.stage}'
   siteTableName: 'site-table-0.6-${self:provider.stage}'
 
 provider:
@@ -40,7 +40,15 @@ functions:
     handler: inventory/create.create
     events:
       - http:
-          path: inventory
+          path: inventory/add
+          method: post
+          cors: true
+
+  createInventoryInAllSites:
+    handler: inventory/createInAllSites.createInAllSites
+    events:
+      - http:
+          path: inventory/create
           method: post
           cors: true
 

@@ -4,21 +4,21 @@ Inventory API for Cloud Native App @ Arcada 2020
 **TO RUN TESTS USE: ```npm test```**
 
 Base url, Not routed anywhere
-[https://ykold98ku7.execute-api.eu-north-1.amazonaws.com/dev](https://ykold98ku7.execute-api.eu-north-1.amazonaws.com/dev)
+[https://gljjr6hwrd.execute-api.eu-north-1.amazonaws.com/dev](https://gljjr6hwrd.execute-api.eu-north-1.amazonaws.com/dev)
 
 ## endpoints:
-  **GET - https://ykold98ku7.execute-api.eu-north-1.amazonaws.com/dev/inventory/{ModelNumber}**
+  **GET - https://gljjr6hwrd.execute-api.eu-north-1.amazonaws.com/dev/inventory/{ModelNumber}**
 
-  **POST - https://ykold98ku7.execute-api.eu-north-1.amazonaws.com/dev/inventory**
+  **POST - https://gljjr6hwrd.execute-api.eu-north-1.amazonaws.com/dev/inventory/add**
 
-  **GET - https://ykold98ku7.execute-api.eu-north-1.amazonaws.com/dev/site/{siteId}**
+  **GET - https://gljjr6hwrd.execute-api.eu-north-1.amazonaws.com/dev/site/{siteId}**
 
-  **POST - https://ykold98ku7.execute-api.eu-north-1.amazonaws.com/dev/site/add**
+  **POST - https://gljjr6hwrd.execute-api.eu-north-1.amazonaws.com/dev/site/add**
 
 
 
 ### Example GET INVENTORY ITEMS BY MODELNUMBER
-[https://ykold98ku7.execute-api.eu-north-1.amazonaws.com/dev/inventory/H7](https://ykold98ku7.execute-api.eu-north-1.amazonaws.com/dev/inventory/H7)
+[https://gljjr6hwrd.execute-api.eu-north-1.amazonaws.com/dev/inventory/H7](https://gljjr6hwrd.execute-api.eu-north-1.amazonaws.com/dev/inventory/H7)
 
 **OUTPUT**
 ```json
@@ -37,7 +37,7 @@ Base url, Not routed anywhere
 ```
 
 ### Example POST NEW ITEM TO INVENTORY
-[https://ykold98ku7.execute-api.eu-north-1.amazonaws.com/dev/inventory/](https://ykold98ku7.execute-api.eu-north-1.amazonaws.com/dev/inventory/)
+[https://gljjr6hwrd.execute-api.eu-north-1.amazonaws.com/dev/inventory/add](https://gljjr6hwrd.execute-api.eu-north-1.amazonaws.com/dev/inventory/add)
 
 ```json
 {
@@ -48,7 +48,7 @@ Base url, Not routed anywhere
 ```
 
 ### Example GET SITE BY ID
-[https://ykold98ku7.execute-api.eu-north-1.amazonaws.com/dev/site/FIN_H1](https://ykold98ku7.execute-api.eu-north-1.amazonaws.com/dev/site/FIN_H1)
+[https://gljjr6hwrd.execute-api.eu-north-1.amazonaws.com/dev/site/FIN_H1](https://gljjr6hwrd.execute-api.eu-north-1.amazonaws.com/dev/site/FIN_H1)
 
 **OUTPUT**
 ```json
@@ -64,7 +64,7 @@ Base url, Not routed anywhere
 
 ### Example POST NEW SITE
 
-[https://ykold98ku7.execute-api.eu-north-1.amazonaws.com/dev/site/add](https://ykold98ku7.execute-api.eu-north-1.amazonaws.com/dev/site/add)
+[https://gljjr6hwrd.execute-api.eu-north-1.amazonaws.com/dev/site/add](https://gljjr6hwrd.execute-api.eu-north-1.amazonaws.com/dev/site/add)
 
 ```json
 {
