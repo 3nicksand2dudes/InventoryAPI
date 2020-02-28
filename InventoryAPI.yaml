@@ -9,12 +9,9 @@ servers:
     description: The base URL.
 
 paths:
-  #/inventory
-    #get:
-      #summary: Returns all Inventory Items 
   /inventory/{id}
     get:
-      summary: Returns an Inventory Item based on id.
+      summary: Returns total amount per item id.
       parameters:
         - name: id
           in: path
@@ -46,7 +43,7 @@ paths:
           description: An item with the specified ID was not found.
         default:
           description: Unexpected error
-  /inventory
+  /inventory/create/{id}
     post:
       summary: Creates a new Inventory Item.
       responses:
@@ -59,3 +56,12 @@ paths:
       responses:
         '201':
           description: Created
+  /inventory/delete/{id}
+  /inventory/reactivate/{id}
+  /inventory/sites/{item id}
+  /inventory/create/{id}
+  /site/{id}
+  /site/create/
+  /site/delete/{id}
+  /site/reactivate/{id}
+  /site/amount/{{item id}
