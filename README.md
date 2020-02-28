@@ -11,6 +11,8 @@ Base url, Not routed anywhere
 
   **POST - https://gljjr6hwrd.execute-api.eu-north-1.amazonaws.com/dev/inventory/add**
 
+  **POST - https://gljjr6hwrd.execute-api.eu-north-1.amazonaws.com/dev/inventory/create**
+
   **GET - https://gljjr6hwrd.execute-api.eu-north-1.amazonaws.com/dev/site/{siteId}**
 
   **POST - https://gljjr6hwrd.execute-api.eu-north-1.amazonaws.com/dev/site/add**
@@ -36,6 +38,15 @@ Base url, Not routed anywhere
 ]
 ```
 
+### Example POST NEW ITEM TO INVENTORY TO EVERY SITE
+[https://gljjr6hwrd.execute-api.eu-north-1.amazonaws.com/dev/inventory/create](https://gljjr6hwrd.execute-api.eu-north-1.amazonaws.com/dev/inventory/create)
+
+```json
+{
+  "modelNumber": "H7"
+}
+```
+
 ### Example POST NEW ITEM TO INVENTORY
 [https://gljjr6hwrd.execute-api.eu-north-1.amazonaws.com/dev/inventory/add](https://gljjr6hwrd.execute-api.eu-north-1.amazonaws.com/dev/inventory/add)
 
@@ -52,13 +63,11 @@ Base url, Not routed anywhere
 
 **OUTPUT**
 ```json
-[
 {
   "siteId": "FIN_H1",
   "address": "StreetName 42",
   "siteName": "Helsinki"
 }
-]
 ```
 
 
