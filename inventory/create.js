@@ -75,7 +75,7 @@ module.exports.create = (event, context, callback) => {
       if (err) {
         console.error(err)
         callback(null, {
-          statusCode: err.statusCode || 501,
+          statusCode: err.statusCode || 500,
           headers: { 'Content-Type': 'text/plain' },
           body: 'Couldn\'t create the inventory item.',
         })
@@ -97,7 +97,7 @@ module.exports.create = (event, context, callback) => {
           if (error) {
             console.error(error)
             callback(null, {
-              statusCode: error.statusCode || 501,
+              statusCode: error.statusCode || 500,
               headers: { 'Content-Type': 'text/plain' },
               body: 'Couldn\'t create the inventory item.',
             })

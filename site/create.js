@@ -59,7 +59,7 @@ module.exports.create = (event, context, callback) => {
         if(error.message == 'The conditional request failed'){
           console.error(error)
           callback(null, {
-            statusCode: error.statusCode || 501,
+            statusCode: error.statusCode || 500,
             headers: { 'Content-Type': 'text/plain' },
             body: 'Couldn\'t create the site. SiteId already exsits',
           })
@@ -68,7 +68,7 @@ module.exports.create = (event, context, callback) => {
         else{
           console.error(error)
           callback(null, {
-            statusCode: error.statusCode || 501,
+            statusCode: error.statusCode || 500,
             headers: { 'Content-Type': 'text/plain' },
             body: 'Couldn\'t create the site.',
           })

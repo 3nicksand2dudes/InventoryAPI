@@ -21,7 +21,7 @@ module.exports.get = (event, context, callback) => {
       if (error) {
         console.error(error)
         callback(null, {
-          statusCode: error.statusCode || 501,
+          statusCode: error.statusCode || 500,
           headers: { 'Content-Type': 'text/plain' },
           body: 'Couldn\'t fetch the site.',
         })
