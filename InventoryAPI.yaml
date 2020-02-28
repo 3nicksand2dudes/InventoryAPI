@@ -13,8 +13,8 @@ paths:
     get:
       summary: Returns total amount per item id.
       parameters:
-        - name: itemId
-          in: path
+        - in: path
+          name: itemId
           schema:
             type: string
           required: true
@@ -46,16 +46,12 @@ paths:
     post:
       summary: Creates a new Inventory item for all sites.
       parameters:
-        - name: itemId
-          in: path
+        - in: path
+          name: itemId
           schema:
             type: string
           required: true
           description: String ID for item to create.
-      responses:
-        requestBody:
-          required: true
-          content:
       responses:
         '201':
           description: Created
@@ -63,8 +59,8 @@ paths:
     post:
       summary: Deletes the given item by enabling the deleted flag on. API usage of item is disabled until item deleted flag is turned off.
       parameters:
-        - name: itemId
-          in: path
+        - in: path
+          name: itemId
           schema:
             type: string
           required: true
@@ -74,8 +70,8 @@ paths:
     post:
       summary: Turns deleted flag off and reactivates the given item.
       parameters:
-        - name: itemId
-          in: path
+        - in: path
+          name: itemId
           schema:
             type: string
           required: true
@@ -85,20 +81,20 @@ paths:
     get:
       summary: Returns the given item amount for all sites.
       parameters:
-        - name: itemId
-          in: path
+        - in: path
+          name: itemId
           schema:
             type: string
           required: true
           description:
       responses:
   # Admin path
-  /inventory/create/{itemId}
+  /inventory/add/{itemId}
     post:
       summary: Admin function that creates a new item to a specific site.
       parameters:
-        - name: itemId
-          in: path
+        - in: path
+          name: itemId
           schema:
             type: string
           required: true
@@ -108,8 +104,8 @@ paths:
     get:
       summary: Returns site specific information for given site id.
       parameters:
-        - name: siteId
-          in: path
+        - in: path
+          name: siteId
           schema:
             type: string
           required: true
@@ -123,8 +119,8 @@ paths:
     post:
       summary: Deletes the given site by enabling the deleted flag on. API usage of site is disabled until site deleted flag is turned off.
       parameters:
-        - name: itemId
-          in: path
+        - in: path
+          name: itemId
           schema:
             type: string
           required: true
@@ -134,8 +130,8 @@ paths:
     post:
       summary: Turns deleted flag off and reactivates the given site.
       parameters:
-        - name: itemId
-          in: path
+        - in: path
+          name: itemId
           schema:
             type: string
           required: true
