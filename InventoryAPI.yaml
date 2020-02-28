@@ -13,13 +13,12 @@ paths:
     get:
       summary: Returns total amount per item id.
       parameters:
-        - name: id
+        - name: itemId
           in: path
-          required: true
-          description: Unique id for fetching Item information.
           schema:
-            type : string
-            #allowReserved: true
+            type: string
+          required: true
+          description: String ID of the item to get.
       responses:
         '200':
           description: A JSON object of Inventory Item.
@@ -47,13 +46,16 @@ paths:
     post:
       summary: Creates a new Inventory item for all sites.
       parameters:
+        - name: itemId
+          in: path
+          schema:
+            type: string
+          required: true
+          description: String ID for item to create.
       responses:
         requestBody:
           required: true
           content:
-            #application/json:
-              #schema:
-                #$ref: '#/components/schemas/User'
       responses:
         '201':
           description: Created
@@ -61,41 +63,83 @@ paths:
     post:
       summary: Deletes the given item by enabling the deleted flag on. API usage of item is disabled until item deleted flag is turned off.
       parameters:
+        - name: itemId
+          in: path
+          schema:
+            type: string
+          required: true
+          description: String ID of the item to delete.
       responses:
   /inventory/reactivate/{itemId}
     post:
       summary: Turns deleted flag off and reactivates the given item.
       parameters:
+        - name: itemId
+          in: path
+          schema:
+            type: string
+          required: true
+          description: String ID of the item to reactivate.
       responses:
   /inventory/site/{itemId}
     get:
       summary: Returns the given item amount for all sites.
       parameters:
+        - name: itemId
+          in: path
+          schema:
+            type: string
+          required: true
+          description:
       responses:
   # Admin path
   /inventory/create/{itemId}
     post:
       summary: Admin function that creates a new item to a specific site.
       parameters:
+        - name: itemId
+          in: path
+          schema:
+            type: string
+          required: true
+          description: String ID of the item to create for a specific site.
       responses:
   /site/{siteId}
     get:
       summary: Returns site specific information for given site id.
       parameters:
+        - name: siteId
+          in: path
+          schema:
+            type: string
+          required: true
+          description: String ID of the site to get.
       responses:
   /site/create/
     post:
       summary: Admin function that creates a new site.
       responses:
-  /site/delete/{id}
+  /site/delete/{siteId}
     post:
       summary: Deletes the given site by enabling the deleted flag on. API usage of site is disabled until site deleted flag is turned off.
       parameters:
+        - name: itemId
+          in: path
+          schema:
+            type: string
+          required: true
+          description: String ID of the site to delete.
       responses:
-  /site/reactivate/{id}
+  /site/reactivate/{siteId}
     post:
       summary: Turns deleted flag off and reactivates the given site.
       parameters:
+        - name: itemId
+          in: path
+          schema:
+            type: string
+          required: true
+          description: String ID of the site to reactivate.
       responses:
   /site/amount
     post:
