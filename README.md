@@ -24,18 +24,10 @@ Base url, Not routed anywhere
 
 **OUTPUT**
 ```json
-[
   {
-    "amount": 45,
     "modelNumber": "H7",
-    "site": "FIN_H3"
-  },
-  {
-    "amount": 42,
-    "modelNumber": "H7",
-    "site": "FIN_H1"
+    "totalAmount": 174
   }
-]
 ```
 
 ### Example POST NEW ITEM TO INVENTORY TO EVERY SITE

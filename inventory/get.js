@@ -42,10 +42,20 @@ module.exports.get = (event, context, callback) => {
         return
       }
       else{
+
+        console.log(result.Items[0].modelNumber)
+
+        // Calculate total amount 
+        let totalAmount = 0
+        result.Items.forEach(e => totalAmount += e.amount)
+
         // create a response  
         const response = {
           statusCode: 200,
-          body: JSON.stringify(result.Items),
+          body: {
+            "modelNumber": result.Items[0].modelNumber,
+            "totalAmount": totalAmount
+          },
         }
         callback(null, response)
       }
