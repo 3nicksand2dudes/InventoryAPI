@@ -9,7 +9,7 @@ servers:
     description: The base URL.
 
 paths:
-  /inventory/{id}
+  /inventory/{itemId}
     get:
       summary: Returns total amount per item id.
       parameters:
@@ -43,9 +43,10 @@ paths:
           description: An item with the specified ID was not found.
         default:
           description: Unexpected error
-  /inventory/create/{id}
+  /inventory/create/{itemId}
     post:
-      summary: Creates a new Inventory Item.
+      summary: Creates a new Inventory item for all sites.
+      parameters:
       responses:
         requestBody:
           required: true
@@ -56,48 +57,47 @@ paths:
       responses:
         '201':
           description: Created
-  /inventory/delete/{id}
+  /inventory/delete/{itemId}
     post:
-      summary:
+      summary: Deletes the given item by enabling the deleted flag on. API usage of item is disabled until item deleted flag is turned off.
       parameters:
       responses:
-  /inventory/reactivate/{id}
+  /inventory/reactivate/{itemId}
     post:
-      summary:
+      summary: Turns deleted flag off and reactivates the given item.
       parameters:
       responses:
-  /inventory/sites/{item id}
+  /inventory/site/{itemId}
     get:
-      summary:
+      summary: Returns the given item amount for all sites.
       parameters:
       responses:
-  /inventory/create/{id}
+  # Admin path
+  /inventory/create/{itemId}
     post:
-      summary:
+      summary: Admin function that creates a new item to a specific site.
       parameters:
       responses:
   /site/{siteId}
     get:
-      summary:
+      summary: Returns site specific information for given site id.
       parameters:
       responses:
   /site/create/
     post:
-      summary:
-      parameters:
+      summary: Admin function that creates a new site.
       responses:
   /site/delete/{id}
     post:
-      summary:
+      summary: Deletes the given site by enabling the deleted flag on. API usage of site is disabled until site deleted flag is turned off.
       parameters:
       responses:
   /site/reactivate/{id}
     post:
-      summary:
+      summary: Turns deleted flag off and reactivates the given site.
       parameters:
       responses:
-  /site/amount/{{itemId}
+  /site/amount
     post:
-      summary:
-      parameters:
+      summary: Updates the amount of given item id to specified site.
       responses:
