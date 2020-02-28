@@ -57,11 +57,47 @@ paths:
         '201':
           description: Created
   /inventory/delete/{id}
+    post:
+      summary:
+      parameters:
+      responses:
   /inventory/reactivate/{id}
+    post:
+      summary:
+      parameters:
+      responses:
   /inventory/sites/{item id}
+    get:
+      summary:
+      parameters:
+      responses:
   /inventory/create/{id}
-  /site/{id}
+    post:
+      summary:
+      parameters:
+      responses:
+  /site/{siteId}
+    get:
+      summary:
+      parameters:
+      responses:
   /site/create/
+    post:
+      summary:
+      parameters:
+      responses:
   /site/delete/{id}
+    post:
+      summary:
+      parameters:
+      responses:
   /site/reactivate/{id}
-  /site/amount/{{item id}
+    post:
+      summary:
+      parameters:
+      responses:
+  /site/amount/{{itemId}
+    post:
+      summary:
+      parameters:
+      responses:
