@@ -59,14 +59,28 @@ functions:
           path: site/{id}
           method: get
           cors: true
-    environment:
-      region: "${self:provider.region}"
 
   createSite:
     handler: site/create.create
     events:
       - http:
           path: site/add
+          method: post
+          cors: true
+
+  deleteSite:
+    handler: site/updateDeleted.delete
+    events:
+      - http:
+          path: site/delete/{id}
+          method: post
+          cors: true
+
+  activateSite:
+    handler: site/updateDeleted.reactivate
+    events:
+      - http:
+          path: site/reactivate/{id}
           method: post
           cors: true
 
