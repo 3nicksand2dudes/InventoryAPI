@@ -84,6 +84,22 @@ functions:
           method: post
           cors: true
 
+  deleteInventory:
+    handler: inventory/updateDeleted.delete
+    events:
+      - http:
+          path: inventory/delete
+          method: post
+          cors: true
+
+  activateInventory:
+    handler: inventory/updateDeleted.reactivate
+    events:
+      - http:
+          path: inventory/reactivate
+          method: post
+          cors: true
+
 
 resources:
   Resources:

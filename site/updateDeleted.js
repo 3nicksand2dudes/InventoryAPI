@@ -38,7 +38,7 @@ function updateDeleted(event, context, callback, deletedStatus){
             if(error.message == 'The conditional request failed'){
                 console.error(error)
                 callback(null, {
-                statusCode: error.statusCode || 500,
+                statusCode: 400,
                 headers: { 'Content-Type': 'text/plain' },
                 body: 'Couldn\'t update the site. Site does not exist',
                 })
@@ -46,7 +46,7 @@ function updateDeleted(event, context, callback, deletedStatus){
             }else{
                 console.error(error)
                 callback(null, {
-                statusCode: error.statusCode || 500,
+                statusCode: 500,
                 headers: { 'Content-Type': 'text/plain' },
                 body: 'Couldn\'t update the site.',
                 })
