@@ -52,8 +52,6 @@ module.exports.createInAllSites = (event, context, callback) => {
 
         }else {
 
-            let failedItems = []
-
             // Scan inventory table and save result as obj for later use to check for duplicate entries
             const scanParams = {
                 TableName: INVENTORY_TABLE,
@@ -96,32 +94,17 @@ module.exports.createInAllSites = (event, context, callback) => {
                             }
 
                         })
-                    }else{
-                        failedItems.push(data.modelNumber)
-                    }   
-
+                    }
                 })
             })
-
-            // If any has failed, report it back
-            if(failedItems.length > 0){
-                const response = {
-                    statusCode: 202,
-                    headers: { 'Content-Type': 'text/plain' },
-                    body: 'Couldn\'t create item created to every site' ,
-                }
-            callback(null, response)
-
-           }
-           // if all succeded
-           else{
-                const response = {
+            
+            // Send response to user that 
+            const response = {
                     statusCode: 201,
                     headers: { 'Content-Type': 'text/plain' },
-                    body: 'Item created to every site',
+                    body: 'Items have been created to every site',
                 }
             callback(null, response)
-           }
         }
     })
 }
