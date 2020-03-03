@@ -26,6 +26,11 @@ provider:
   environment:
     INVENTORY_TABLE: ${self:custom.inventoryTableName}
     SITE_TABLE: ${self:custom.siteTableName}
+  apiKeys:
+    - Inventory-API-admin-apikey
+    - Inventory-API-products-apikey
+    - Inventory-API-delivery-apikey
+    - Inventory-API-ui-apikey
 
 functions:
   getInventory:
@@ -35,6 +40,7 @@ functions:
           path: inventory/{id}
           method: get
           cors: true
+          private: true
 
   createInventory:
     handler: inventory/create.create
@@ -43,6 +49,7 @@ functions:
           path: inventory/add
           method: post
           cors: true
+          private: true
 
   createInventoryInAllSites:
     handler: inventory/createInAllSites.createInAllSites
@@ -51,6 +58,7 @@ functions:
           path: inventory/create
           method: post
           cors: true
+          private: true
 
   getSite:
     handler: site/get.get
@@ -59,6 +67,7 @@ functions:
           path: site/{id}
           method: get
           cors: true
+          private: true
 
   createSite:
     handler: site/create.create
@@ -67,6 +76,7 @@ functions:
           path: site/add
           method: post
           cors: true
+          private: true
 
   deleteSite:
     handler: site/updateDeleted.delete
@@ -75,6 +85,7 @@ functions:
           path: site/delete/{id}
           method: post
           cors: true
+          private: true
 
   activateSite:
     handler: site/updateDeleted.reactivate
@@ -83,6 +94,7 @@ functions:
           path: site/reactivate/{id}
           method: post
           cors: true
+          private: true
 
   deleteInventory:
     handler: inventory/updateDeleted.delete
@@ -91,6 +103,7 @@ functions:
           path: inventory/delete
           method: post
           cors: true
+          private: true
 
   activateInventory:
     handler: inventory/updateDeleted.reactivate
@@ -99,6 +112,7 @@ functions:
           path: inventory/reactivate
           method: post
           cors: true
+          private: true
 
   amountInventory:
     handler: inventory/updateAmount.updateAmount
@@ -107,6 +121,7 @@ functions:
           path: inventory/amount
           method: post
           cors: true
+          private: true
 
 
 resources:

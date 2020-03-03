@@ -44,6 +44,11 @@
                                 "enabled": true,
                                 "name": "Content-Type",
                                 "value": "application/json"
+                            },
+                            {
+                                "enabled": true,
+                                "name": "x-api-key",
+                                "value": "rJcKkS9bai8EaYzN5sWRkaz0URLS2uUq94zQrWXQ"
                             }
                         ]
                     }
@@ -63,7 +68,7 @@
                                 "items": []
                             },
                             "bodyType": "Text",
-                            "textBody": "{\n  \"modelNumber\": \"H7\", \n  \"amount\": 42,\n  \"siteId\": \"FIN_H1\"\n}"
+                            "textBody": "{\n  \"modelNumber\": \"H27\", \n  \"amount\": 42,\n  \"siteId\": \"FIN_H1\"\n}"
                         },
                         "uri": {
                             "query": {
@@ -85,6 +90,11 @@
                                 "enabled": true,
                                 "name": "Content-Type",
                                 "value": "application/json"
+                            },
+                            {
+                                "enabled": true,
+                                "name": "x-api-key",
+                                "value": "rJcKkS9bai8EaYzN5sWRkaz0URLS2uUq94zQrWXQ"
                             }
                         ]
                     }
@@ -104,7 +114,7 @@
                                 "items": []
                             },
                             "bodyType": "Text",
-                            "textBody": "{\n  \"siteId\": \"DNK_C2\",\n  \"address\": \"StreetName 42\",\n  \"siteName\": \"Copenhagen\"\n}"
+                            "textBody": "{\n  \"siteId\": \"DNK_C3\",\n  \"address\": \"StreetName 42\",\n  \"siteName\": \"Copenhagen\"\n}"
                         },
                         "uri": {
                             "query": {
@@ -126,6 +136,11 @@
                                 "enabled": true,
                                 "name": "Content-Type",
                                 "value": "application/json"
+                            },
+                            {
+                                "enabled": true,
+                                "name": "x-api-key",
+                                "value": "rJcKkS9bai8EaYzN5sWRkaz0URLS2uUq94zQrWXQ"
                             }
                         ]
                     }
@@ -166,6 +181,11 @@
                                 "enabled": true,
                                 "name": "Content-Type",
                                 "value": "application/json"
+                            },
+                            {
+                                "enabled": true,
+                                "name": "x-api-key",
+                                "value": "rJcKkS9bai8EaYzN5sWRkaz0URLS2uUq94zQrWXQ"
                             }
                         ]
                     }
@@ -200,7 +220,13 @@
                         },
                         "id": "5c2ea8ef-1f8b-4980-adb3-c691b4d05ced",
                         "name": "GET - Site by ID",
-                        "headers": []
+                        "headers": [
+                            {
+                                "enabled": true,
+                                "name": "x-api-key",
+                                "value": "rJcKkS9bai8EaYzN5sWRkaz0URLS2uUq94zQrWXQ"
+                            }
+                        ]
                     }
                 },
                 {
@@ -233,7 +259,13 @@
                         },
                         "id": "db8bf1d7-4d99-4e91-9621-017da3a56bda",
                         "name": "GET - inventory items amount by model number",
-                        "headers": []
+                        "headers": [
+                            {
+                                "enabled": true,
+                                "name": "x-api-key",
+                                "value": "rJcKkS9bai8EaYzN5sWRkaz0URLS2uUq94zQrWXQ"
+                            }
+                        ]
                     }
                 },
                 {
@@ -273,6 +305,11 @@
                                 "enabled": true,
                                 "name": "Content-Type",
                                 "value": "application/json"
+                            },
+                            {
+                                "enabled": true,
+                                "name": "x-api-key",
+                                "value": "rJcKkS9bai8EaYzN5sWRkaz0URLS2uUq94zQrWXQ"
                             }
                         ]
                     }
@@ -314,6 +351,11 @@
                                 "enabled": true,
                                 "name": "Content-Type",
                                 "value": "application/json"
+                            },
+                            {
+                                "enabled": true,
+                                "name": "x-api-key",
+                                "value": "rJcKkS9bai8EaYzN5sWRkaz0URLS2uUq94zQrWXQ"
                             }
                         ]
                     }
@@ -355,6 +397,11 @@
                                 "enabled": true,
                                 "name": "Content-Type",
                                 "value": "application/json"
+                            },
+                            {
+                                "enabled": true,
+                                "name": "x-api-key",
+                                "value": "rJcKkS9bai8EaYzN5sWRkaz0URLS2uUq94zQrWXQ"
                             }
                         ]
                     }
@@ -393,13 +440,14 @@
                         "name": "UPDATE - Inventory amount",
                         "headers": [
                             {
-                                "name": "x-api-key",
-                                "value": " clX139qyyf7G9XoX14RPr6jlrutaU8p39qN1Ou7J"
-                            },
-                            {
                                 "enabled": true,
                                 "name": "Content-Type",
                                 "value": "application/json"
+                            },
+                            {
+                                "enabled": true,
+                                "name": "x-api-key",
+                                "value": "rJcKkS9bai8EaYzN5sWRkaz0URLS2uUq94zQrWXQ"
                             }
                         ]
                     }
