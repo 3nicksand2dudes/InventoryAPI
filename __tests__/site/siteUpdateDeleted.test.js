@@ -71,6 +71,17 @@ describe('API — UPDATE Site Deleted status', () => {
           })
     })
 
+    it('POST /site/delete/{id} - API key missing', (done) => {
+        server.post('/site/delete/TST_T1')
+          .expect(403)
+          .end((error, result) => {
+            if (error) return done(error)
+            expect(result.error.text).to.equal('{"message":"Forbidden"}')
+              //console.log(result.body)
+            return done()
+          })
+      })
+
     it('POST /site/reactivate/{id}', (done) => {
       server.post('/site/reactivate/TST_T1')
         .set({ 'x-api-Key': 'd41d8cd98f00b204e9800998ecf8427e'})
@@ -111,4 +122,15 @@ describe('API — UPDATE Site Deleted status', () => {
             return done()
           })
     })
+
+    it('POST /site/reactivate/{id} - API key missing', (done) => {
+        server.post('/site/reactivate/TST_T1')
+          .expect(403)
+          .end((error, result) => {
+            if (error) return done(error)
+            expect(result.error.text).to.equal('{"message":"Forbidden"}')
+            //console.log(result.body)
+            return done()
+          })
+      })
 })

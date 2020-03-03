@@ -171,4 +171,21 @@ describe('API — POST Create New Site', () => {
             return done()
           })
     })
+
+    it('POST /site/add', (done) => {
+        server.post('/site/add')
+          .send({
+              "siteId": "TST_T2",
+              "address": "TestStreet 1",
+              "siteName": "Cityname"
+            })
+          .set({ 'Content-Type' : 'application/json'})
+          .expect(403)
+          .end((error, result) => {
+            if (error) return done(error)
+            expect(result.error.text).to.equal('{"message":"Forbidden"}')
+            //console.log(result)
+            return done()
+          })
+      })
 })

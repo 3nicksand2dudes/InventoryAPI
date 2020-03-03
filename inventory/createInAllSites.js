@@ -1,7 +1,7 @@
 'use strict'; // Use Strict mode 
 
 const AWS = require('aws-sdk')
-const { uuid, isUuid  } = require('uuidv4')
+const { uuid  } = require('uuidv4')
 
 const INVENTORY_TABLE = process.env.INVENTORY_TABLE
 const SITE_TABLE  = process.env.SITE_TABLE

@@ -178,7 +178,6 @@
                         "name": "ADMIN - POST - Reactivate Site",
                         "headers": [
                             {
-                                "enabled": true,
                                 "name": "Content-Type",
                                 "value": "application/json"
                             },

@@ -1,9 +1,19 @@
 'use strict'; // Use Strict mode 
 
 const AWS = require('aws-sdk')
+let dynamoDb
 
+// Change the dynamoDB based on if stage is test or Dev
+if(process.env.Stage == "test"){
+  const dynamodb = require('serverless-dynamodb-client')
+  dynamoDb = dynamodb.doc; // equals AWS.DynamoDB.DocumentClient()
+}
+else{  
+  dynamoDb = new AWS.DynamoDB.DocumentClient()  
+}
+
+// Tabel names
 const INVENTORY_TABLE = process.env.INVENTORY_TABLE
-const dynamoDb = new AWS.DynamoDB.DocumentClient()
 
 module.exports.get = (event, context, callback) => {
 

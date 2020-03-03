@@ -53,3 +53,8 @@ return docClient.batchWriteItem(buildDeleteData, (error) => {
       })
   })
 }
+
+
+it('DynamoDB Helper', (done) => {
+    return done()
+})

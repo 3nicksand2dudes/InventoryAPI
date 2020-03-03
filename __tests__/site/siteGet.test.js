@@ -57,4 +57,15 @@ describe('API — GET site', () => {
           return done()
         })
     })
+
+    it('GET /site/{id} - API key missing', (done) => {
+      server.get('/site/TST_T1')
+        .expect(403)
+        .end((error, result) => {
+          if (error) return done(error)
+          expect(result.error.text).to.equal('{"message":"Forbidden"}')
+            //console.log(result.body)
+          return done()
+        })
+    })
 })

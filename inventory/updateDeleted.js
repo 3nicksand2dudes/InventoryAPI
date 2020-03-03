@@ -1,10 +1,19 @@
 'use strict'; // Use Strict mode 
 
 const AWS = require('aws-sdk')
+let dynamoDb
 
-const INVENTORY_TABLE  = process.env.INVENTORY_TABLE
-const dynamoDb = new AWS.DynamoDB.DocumentClient()
+// Change the dynamoDB based on if stage is test or Dev
+if(process.env.Stage == "test"){
+  const dynamodb = require('serverless-dynamodb-client')
+  dynamoDb = dynamodb.doc; // equals AWS.DynamoDB.DocumentClient()
+}
+else{  
+  dynamoDb = new AWS.DynamoDB.DocumentClient()  
+}
 
+// Tabel names
+const INVENTORY_TABLE = process.env.INVENTORY_TABLE
 
 module.exports.delete = (event, context, callback) => {
     updateDeleted(event, context, callback, true)
@@ -80,10 +89,17 @@ function updateDeleted(event, context, callback, deletedStatus){
                     })
                     return
                 }
+
+                const responseBody = {
+                    "amount": result.Attributes.amount,
+                    "deleted": result.Attributes.deleted,
+                    "modelNumber": result.Attributes.modelNumber,
+                    "site": result.Attributes.site,
+                }
         
                 const response = {
                     statusCode: 200,
-                    body: JSON.stringify(result.Attributes),
+                    body: JSON.stringify(responseBody),
                 }
                 callback(null, response)    
             })
