@@ -1,8 +1,0 @@
-post https://ykold98ku7.execute-api.eu-north-1.amazonaws.com/dev/site/add/
-Content-Type: application/json
-
-{
-"siteId": "TEST_T2",
-"address": "Teststreetname 666",
-"siteName": 2
-}

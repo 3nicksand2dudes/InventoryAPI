@@ -49,12 +49,12 @@ Base url, Not routed anywhere
 {
   "modelNumber": "H7", 
   "amount": 42,
-  "siteId": "FIN H1"
+  "siteId": "FIN_H1"
 }
 ```
 
 **OUTPUT**
-```
+```json
 {
   "id": "690c8fbb-2aae-4b1d-bcb7-9e413015467b",
   "modelNumber": "H23",
@@ -116,12 +116,10 @@ Base url, Not routed anywhere
 **OUTPUT**
 ```json
 {
-  "Attributes":{
-    "siteId": "FIN_H1",
-    "address": "StreetName 42",
-    "deleted": true,
-    "siteName": "Helsinki"
-  }
+  "siteId": "FIN_H1",
+  "address": "StreetName 42",
+  "deleted": true,
+  "siteName": "Helsinki"
 }
 ```
 
@@ -131,12 +129,10 @@ Base url, Not routed anywhere
 **OUTPUT**
 ```json
 {
-  "Attributes":{
-    "siteId": "FIN_H1",
-    "address": "StreetName 42",
-    "deleted": false,
-    "siteName": "Helsinki"
-  }
+  "siteId": "FIN_H1",
+  "address": "StreetName 42",
+  "deleted": false,
+  "siteName": "Helsinki"
 }
 ```
 
@@ -154,13 +150,11 @@ Base url, Not routed anywhere
 **OUTPUT**
 ```json
 {
-  "Attributes":{
-    "amount": 86,
-    "deleted": true,
-    "modelNumber": "H2",
-    "site": "FIN_H1",
-    "id": "776333a1-8845-453c-bd18-99758e323fd5"
-  }
+  "amount": 86,
+  "deleted": true,
+  "modelNumber": "H2",
+  "site": "FIN_H1",
+  "id": "776333a1-8845-453c-bd18-99758e323fd5"
 }
 ```
 
@@ -178,13 +172,11 @@ Base url, Not routed anywhere
 **OUTPUT**
 ```json
 {
-  "Attributes":{
-    "amount": 86,
-    "deleted": false,
-    "modelNumber": "H2",
-    "site": "FIN_H1",
-    "id": "776333a1-8845-453c-bd18-99758e323fd5"
-  }
+  "amount": 86,
+  "deleted": false,
+  "modelNumber": "H2",
+  "site": "FIN_H1",
+  "id": "776333a1-8845-453c-bd18-99758e323fd5"
 }
 ```
 
@@ -204,12 +196,11 @@ Base url, Not routed anywhere
 **OUTPUT**
 ```json
 {
-  "Attributes":{
-    "amount": 86,
-    "deleted": false,
-    "modelNumber": "H2",
-    "site": "FIN_H1",
-    "id": "776333a1-8845-453c-bd18-99758e323fd5"
-  }
+  "amount": 108,
+  "deleted": false,
+  "modelNumber": "H2",
+  "site": "FIN_H1",
+  "id": "776333a1-8845-453c-bd18-99758e323fd5"
 }
+
 ```

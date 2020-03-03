@@ -83,7 +83,7 @@ function updateDeleted(event, context, callback, deletedStatus){
         
                 const response = {
                     statusCode: 200,
-                    body: JSON.stringify(result),
+                    body: JSON.stringify(result.Attributes),
                 }
                 callback(null, response)    
             })

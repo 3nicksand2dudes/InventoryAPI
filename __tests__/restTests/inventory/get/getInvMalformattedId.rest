@@ -1,2 +1,0 @@
-get https://ykold98ku7.execute-api.eu-north-1.amazonaws.com/dev/inventory/ASVAL213
-Content-Type: application/json

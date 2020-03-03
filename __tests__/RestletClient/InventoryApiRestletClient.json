@@ -1,0 +1,410 @@
+{
+    "version": 6,
+    "entities": [
+        {
+            "entity": {
+                "type": "Project",
+                "id": "f8a479d0-6a4d-4049-aa75-f799f4d5b695",
+                "name": "InventoryAPI"
+            },
+            "children": [
+                {
+                    "entity": {
+                        "type": "Request",
+                        "method": {
+                            "requestBody": true,
+                            "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+                            "name": "POST"
+                        },
+                        "body": {
+                            "formBody": {
+                                "overrideContentType": true,
+                                "encoding": "application/x-www-form-urlencoded",
+                                "items": []
+                            },
+                            "bodyType": "Text"
+                        },
+                        "uri": {
+                            "query": {
+                                "delimiter": "&",
+                                "items": []
+                            },
+                            "scheme": {
+                                "secure": true,
+                                "name": "https",
+                                "version": "V11"
+                            },
+                            "host": "gljjr6hwrd.execute-api.eu-north-1.amazonaws.com",
+                            "path": "/dev/site/reactivate/FIN_H1"
+                        },
+                        "id": "e06ca13e-1f83-4d60-ba01-b88746402a86",
+                        "name": "ADMIN - POST - Delete Site",
+                        "headers": [
+                            {
+                                "enabled": true,
+                                "name": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "entity": {
+                        "type": "Request",
+                        "method": {
+                            "requestBody": true,
+                            "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+                            "name": "POST"
+                        },
+                        "body": {
+                            "formBody": {
+                                "overrideContentType": true,
+                                "encoding": "application/x-www-form-urlencoded",
+                                "items": []
+                            },
+                            "bodyType": "Text",
+                            "textBody": "{\n  \"modelNumber\": \"H7\", \n  \"amount\": 42,\n  \"siteId\": \"FIN_H1\"\n}"
+                        },
+                        "uri": {
+                            "query": {
+                                "delimiter": "&",
+                                "items": []
+                            },
+                            "scheme": {
+                                "secure": true,
+                                "name": "https",
+                                "version": "V11"
+                            },
+                            "host": "gljjr6hwrd.execute-api.eu-north-1.amazonaws.com",
+                            "path": "/dev/inventory/add"
+                        },
+                        "id": "790fcea0-14aa-4d6e-959a-239820e31f9d",
+                        "name": "ADMIN - POST - New Item to Inventory",
+                        "headers": [
+                            {
+                                "enabled": true,
+                                "name": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "entity": {
+                        "type": "Request",
+                        "method": {
+                            "requestBody": true,
+                            "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+                            "name": "POST"
+                        },
+                        "body": {
+                            "formBody": {
+                                "overrideContentType": true,
+                                "encoding": "application/x-www-form-urlencoded",
+                                "items": []
+                            },
+                            "bodyType": "Text",
+                            "textBody": "{\n  \"siteId\": \"DNK_C2\",\n  \"address\": \"StreetName 42\",\n  \"siteName\": \"Copenhagen\"\n}"
+                        },
+                        "uri": {
+                            "query": {
+                                "delimiter": "&",
+                                "items": []
+                            },
+                            "scheme": {
+                                "secure": true,
+                                "name": "https",
+                                "version": "V11"
+                            },
+                            "host": "gljjr6hwrd.execute-api.eu-north-1.amazonaws.com",
+                            "path": "/dev/site/add"
+                        },
+                        "id": "b8a6d011-8300-466b-8632-7c6d208c28ce",
+                        "name": "ADMIN - POST - New Site",
+                        "headers": [
+                            {
+                                "enabled": true,
+                                "name": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "entity": {
+                        "type": "Request",
+                        "method": {
+                            "requestBody": true,
+                            "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+                            "name": "POST"
+                        },
+                        "body": {
+                            "formBody": {
+                                "overrideContentType": true,
+                                "encoding": "application/x-www-form-urlencoded",
+                                "items": []
+                            },
+                            "bodyType": "Text"
+                        },
+                        "uri": {
+                            "query": {
+                                "delimiter": "&",
+                                "items": []
+                            },
+                            "scheme": {
+                                "secure": true,
+                                "name": "https",
+                                "version": "V11"
+                            },
+                            "host": "gljjr6hwrd.execute-api.eu-north-1.amazonaws.com",
+                            "path": "/dev/site/reactivate/FIN_H1"
+                        },
+                        "id": "5a348701-2c31-4f36-876d-b562883744f1",
+                        "name": "ADMIN - POST - Reactivate Site",
+                        "headers": [
+                            {
+                                "enabled": true,
+                                "name": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "entity": {
+                        "type": "Request",
+                        "method": {
+                            "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+                            "name": "GET"
+                        },
+                        "body": {
+                            "formBody": {
+                                "overrideContentType": true,
+                                "encoding": "application/x-www-form-urlencoded",
+                                "items": []
+                            },
+                            "bodyType": "Text"
+                        },
+                        "uri": {
+                            "query": {
+                                "delimiter": "&",
+                                "items": []
+                            },
+                            "scheme": {
+                                "secure": true,
+                                "name": "https",
+                                "version": "V11"
+                            },
+                            "host": "gljjr6hwrd.execute-api.eu-north-1.amazonaws.com",
+                            "path": "/dev/site/FIN_H1"
+                        },
+                        "id": "5c2ea8ef-1f8b-4980-adb3-c691b4d05ced",
+                        "name": "GET - Site by ID",
+                        "headers": []
+                    }
+                },
+                {
+                    "entity": {
+                        "type": "Request",
+                        "method": {
+                            "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+                            "name": "GET"
+                        },
+                        "body": {
+                            "formBody": {
+                                "overrideContentType": true,
+                                "encoding": "application/x-www-form-urlencoded",
+                                "items": []
+                            },
+                            "bodyType": "Text"
+                        },
+                        "uri": {
+                            "query": {
+                                "delimiter": "&",
+                                "items": []
+                            },
+                            "scheme": {
+                                "secure": true,
+                                "name": "https",
+                                "version": "V11"
+                            },
+                            "host": "gljjr6hwrd.execute-api.eu-north-1.amazonaws.com",
+                            "path": "/dev/inventory/H7"
+                        },
+                        "id": "db8bf1d7-4d99-4e91-9621-017da3a56bda",
+                        "name": "GET - inventory items amount by model number",
+                        "headers": []
+                    }
+                },
+                {
+                    "entity": {
+                        "type": "Request",
+                        "method": {
+                            "requestBody": true,
+                            "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+                            "name": "POST"
+                        },
+                        "body": {
+                            "formBody": {
+                                "overrideContentType": true,
+                                "encoding": "application/x-www-form-urlencoded",
+                                "items": []
+                            },
+                            "bodyType": "Text",
+                            "textBody": "{\n  \"modelNumber\": \"H7\"\n}"
+                        },
+                        "uri": {
+                            "query": {
+                                "delimiter": "&",
+                                "items": []
+                            },
+                            "scheme": {
+                                "secure": true,
+                                "name": "https",
+                                "version": "V11"
+                            },
+                            "host": "gljjr6hwrd.execute-api.eu-north-1.amazonaws.com",
+                            "path": "/dev/inventory/create"
+                        },
+                        "id": "696eb00f-b99e-4a81-b8d6-64b8e7402c0a",
+                        "name": "POST - Add Item to Inventory to Every Site",
+                        "headers": [
+                            {
+                                "enabled": true,
+                                "name": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "entity": {
+                        "type": "Request",
+                        "method": {
+                            "requestBody": true,
+                            "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+                            "name": "POST"
+                        },
+                        "body": {
+                            "formBody": {
+                                "overrideContentType": true,
+                                "encoding": "application/x-www-form-urlencoded",
+                                "items": []
+                            },
+                            "bodyType": "Text",
+                            "textBody": "{\n  \"modelNumber\": \"H2\",\n  \"site\": \"FIN_H1\"\n}"
+                        },
+                        "uri": {
+                            "query": {
+                                "delimiter": "&",
+                                "items": []
+                            },
+                            "scheme": {
+                                "secure": true,
+                                "name": "https",
+                                "version": "V11"
+                            },
+                            "host": "gljjr6hwrd.execute-api.eu-north-1.amazonaws.com",
+                            "path": "/dev/inventory/delete"
+                        },
+                        "id": "28d631f4-482a-4176-9ae6-cd6ad572bbd3",
+                        "name": "POST - Delete inventory",
+                        "headers": [
+                            {
+                                "enabled": true,
+                                "name": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "entity": {
+                        "type": "Request",
+                        "method": {
+                            "requestBody": true,
+                            "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+                            "name": "POST"
+                        },
+                        "body": {
+                            "formBody": {
+                                "overrideContentType": true,
+                                "encoding": "application/x-www-form-urlencoded",
+                                "items": []
+                            },
+                            "bodyType": "Text",
+                            "textBody": "{\n  \"modelNumber\": \"H2\",\n  \"site\": \"FIN_H1\"\n}"
+                        },
+                        "uri": {
+                            "query": {
+                                "delimiter": "&",
+                                "items": []
+                            },
+                            "scheme": {
+                                "secure": true,
+                                "name": "https",
+                                "version": "V11"
+                            },
+                            "host": "gljjr6hwrd.execute-api.eu-north-1.amazonaws.com",
+                            "path": "/dev/inventory/reactivate"
+                        },
+                        "id": "f124e002-6669-4551-b8a3-8748bc276ab5",
+                        "name": "POST - Reactivate inventory",
+                        "headers": [
+                            {
+                                "enabled": true,
+                                "name": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "entity": {
+                        "type": "Request",
+                        "method": {
+                            "requestBody": true,
+                            "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+                            "name": "POST"
+                        },
+                        "body": {
+                            "formBody": {
+                                "overrideContentType": true,
+                                "encoding": "application/x-www-form-urlencoded",
+                                "items": []
+                            },
+                            "bodyType": "Text",
+                            "textBody": "{\n  \"modelNumber\": \"H2\",\n  \"site\": \"FIN_H1\",\n  \"type\": \"+\",\n  \"amount\": 22\n}"
+                        },
+                        "uri": {
+                            "query": {
+                                "delimiter": "&",
+                                "items": []
+                            },
+                            "scheme": {
+                                "secure": true,
+                                "name": "https",
+                                "version": "V11"
+                            },
+                            "host": "gljjr6hwrd.execute-api.eu-north-1.amazonaws.com",
+                            "path": "/dev/inventory/amount"
+                        },
+                        "id": "aa3e1b1d-47d4-4931-ba70-09e950cf864a",
+                        "name": "UPDATE - Inventory amount",
+                        "headers": [
+                            {
+                                "name": "x-api-key",
+                                "value": " clX139qyyf7G9XoX14RPr6jlrutaU8p39qN1Ou7J"
+                            },
+                            {
+                                "enabled": true,
+                                "name": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    ]
+}
