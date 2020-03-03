@@ -1,10 +1,21 @@
 'use strict'; // Use Strict mode 
 
 const AWS = require('aws-sdk')
+let dynamoDb
 
+// Change the dynamoDB based on if stage is test or Dev
+if(process.env.Stage == "test"){
+  const dynamodb = require('serverless-dynamodb-client')
+  dynamoDb = dynamodb.doc; // equals AWS.DynamoDB.DocumentClient()
+}
+else{  
+  dynamoDb = new AWS.DynamoDB.DocumentClient()  
+}
+
+// Tabel names
 const SITE_TABLE  = process.env.SITE_TABLE
-const dynamoDb = new AWS.DynamoDB.DocumentClient()
 
+// POST CREATE A SITE
 module.exports.create = (event, context, callback) => {
     
     const data = JSON.parse(event.body)
@@ -29,7 +40,6 @@ module.exports.create = (event, context, callback) => {
         })
         return
     }
-
     // Check if siteId is a string
     if (typeof data.siteId !== 'string') {
       console.error('Validation Failed')
@@ -41,6 +51,7 @@ module.exports.create = (event, context, callback) => {
       return
     }
 
+    // PUT Query
     const params = {
       TableName: SITE_TABLE,
       Item: {

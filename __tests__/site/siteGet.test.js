@@ -28,7 +28,7 @@ afterAll((done) => {
   ], done);
 })
 
-describe('API — teamsByGame', () => {
+describe('API — GET site', () => {
     const server = request('http://localhost:3000')
   
     it('GET /site/{id}', (done) => {
