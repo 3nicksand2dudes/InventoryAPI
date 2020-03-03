@@ -111,6 +111,28 @@ paths:
           required: true
           description: String ID of the site to get.
       responses:
+        '200':
+          description: A JSON object of Inventory Item.
+          content:
+            application/json:
+            schema:
+              type: object
+              properties:
+                siteID:
+                  type: string
+                  example: FIN_H1
+                siteName:
+                  type: string
+                  example: Helsinki
+                address:
+                  type: string
+                  example: StreetName 42
+        '400':
+          description: The specified site ID is invalid (not a number).
+        '404':
+          description: A site with the specified ID was not found.
+        default:
+          description: Unexpected error
   /site/create/
     post:
       summary: Admin function that creates a new site.
