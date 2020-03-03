@@ -2,14 +2,22 @@
 
 service: Inventory-API
 
+plugins:
+  - serverless-dynamodb-local
+  - serverless-offline
+
 custom:
   inventoryTableName: 'inventory-table-0.6-${self:provider.stage}'
   siteTableName: 'site-table-0.6-${self:provider.stage}'
+  dynamodb:
+      stages:
+        - test
+
 
 provider:
   name: aws
   runtime: nodejs12.x
-  stage: dev
+  stage: ${opt:stage, 'dev'}
   region: eu-north-1
   iamRoleStatements:
     - Effect: Allow
@@ -26,6 +34,7 @@ provider:
   environment:
     INVENTORY_TABLE: ${self:custom.inventoryTableName}
     SITE_TABLE: ${self:custom.siteTableName}
+    Stage: ${opt:stage, 'dev'}
   apiKeys:
     - Inventory-API-admin-apikey
     - Inventory-API-products-apikey

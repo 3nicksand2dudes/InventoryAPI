@@ -1,7 +1,14 @@
 # InventoryAPI
 Inventory API for Cloud Native App @ Arcada 2020
 
-**TO RUN TESTS USE: ```npm test```**
+**TO RUN TESTS USE:** 
+
+
+```
+serverless dynamodb start --migrate --stage test --sharedDb
+serverless offline --stage test
+npm test
+```
 
 Base url, Not routed anywhere
 [https://gljjr6hwrd.execute-api.eu-north-1.amazonaws.com/dev](https://gljjr6hwrd.execute-api.eu-north-1.amazonaws.com/dev)
