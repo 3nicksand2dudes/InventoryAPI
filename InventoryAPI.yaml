@@ -200,6 +200,31 @@ paths:
           required: true
           description: String ID of the site to delete.
       responses:
+        '200':
+          description: A JSON object of deleted site.
+          content:
+            application/json:
+            schema:
+              type: object
+              properties:
+                siteID:
+                  type: string
+                  example: FIN_H1
+                address:
+                  type: string
+                  example: StreetName 42
+                deleted:
+                  type: bool
+                  example: true
+                siteName:
+                  type: string
+                  example: Helsinki
+        '400':
+          description: The specified site ID is invalid (not a number).
+        '500':
+          description: Could not update flag.
+        default:
+          description: Unexpected error
   /site/reactivate/{siteId}
     post:
       summary: Turns deleted flag off and reactivates the given site.
@@ -211,6 +236,31 @@ paths:
           required: true
           description: String ID of the site to reactivate.
       responses:
+        '200':
+          description: A JSON object of reactivated site.
+          content:
+            application/json:
+            schema:
+              type: object
+              properties:
+                siteID:
+                  type: string
+                  example: FIN_H1
+                address:
+                  type: string
+                  example: StreetName 42
+                deleted:
+                  type: bool
+                  example: false
+                siteName:
+                  type: string
+                  example: Helsinki
+        '400':
+          description: The specified site ID is invalid (not a number).
+        '500':
+          description: Could not update flag.
+        default:
+          description: Unexpected error
   /site/amount
     post:
       summary: Updates the amount of given item id to specified site.
