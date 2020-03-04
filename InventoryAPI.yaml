@@ -66,6 +66,31 @@ paths:
           required: true
           description: String ID of the item to delete.
       responses:
+        '200':
+          description: A JSON object of deleted Inventory Item.
+          content:
+            application/json:
+            schema:
+              type: object
+              properties:
+                amount:
+                  type: string
+                  example: 86
+                deleted:
+                  type: bool
+                  example: true
+                modelNumber:
+                  type: string
+                  example: H2
+                site:
+                  type: string
+                  example: FIN_H1
+        '400':
+          description: Model Number or site does not exist.
+        '500':
+          description: Could not update flag.
+        default:
+          description: Unexpected error
   /inventory/reactivate/{itemId}
     post:
       summary: Turns deleted flag off and reactivates the given item.
@@ -77,6 +102,31 @@ paths:
           required: true
           description: String ID of the item to reactivate.
       responses:
+        '200':
+          description: A JSON object of reactivated Inventory Item.
+          content:
+            application/json:
+            schema:
+              type: object
+              properties:
+                amount:
+                  type: string
+                  example: 86
+                deleted:
+                  type: bool
+                  example: false
+                modelNumber:
+                  type: string
+                  example: H2
+                site:
+                  type: string
+                  example: FIN_H1
+        '400':
+          description: Model Number or site does not exist.
+        '500':
+          description: Could not update flag.
+        default:
+          description: Unexpected error
   /inventory/site/{itemId}
     get:
       summary: Returns the given item amount for all sites.
@@ -137,6 +187,8 @@ paths:
     post:
       summary: Admin function that creates a new site.
       responses:
+        '201':
+          descrption: Created
   /site/delete/{siteId}
     post:
       summary: Deletes the given site by enabling the deleted flag on. API usage of site is disabled until site deleted flag is turned off.
