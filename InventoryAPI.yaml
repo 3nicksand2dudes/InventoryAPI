@@ -2,6 +2,7 @@
 openapi: 3.0.2
 info:
   title: Inventory API
+  version: 1.0.0
   description: An API for managing the Inventory Databases.
 
 servers:
@@ -9,7 +10,7 @@ servers:
     description: The base URL.
 
 paths:
-  /inventory/{itemId}
+  /inventory/{itemId}:
     get:
       summary: Returns total amount per item id.
       parameters:
@@ -42,7 +43,7 @@ paths:
           description: An item with the specified ID was not found.
         default:
           description: Unexpected error
-  /inventory/create/{itemId}
+  /inventory/create/{itemId}:
     post:
       summary: Creates a new Inventory item for all sites.
       parameters:
@@ -52,10 +53,17 @@ paths:
             type: string
           required: true
           description: String ID for item to create.
+      requestBody:
+        description: Optional description in *Markdown* #fix
+        required: true
+        content:
+          application/json:
+            #schema:
+              #$ref: '#/components/schemas/Pet' #fix
       responses:
         '201':
           description: Created
-  /inventory/delete/{itemId}
+  /inventory/delete/{itemId}:
     post:
       summary: Deletes the given item by enabling the deleted flag on. API usage of item is disabled until item deleted flag is turned off.
       parameters:
@@ -65,6 +73,13 @@ paths:
             type: string
           required: true
           description: String ID of the item to delete.
+      requestBody:
+        description: Optional description in *Markdown* #fix
+        required: true
+        content:
+          application/json:
+            #schema:
+              #$ref: '#/components/schemas/Pet' #fix
       responses:
         '200':
           description: A JSON object of deleted Inventory Item.
@@ -91,7 +106,7 @@ paths:
           description: Could not update flag.
         default:
           description: Unexpected error
-  /inventory/reactivate/{itemId}
+  /inventory/reactivate/{itemId}:
     post:
       summary: Turns deleted flag off and reactivates the given item.
       parameters:
@@ -101,6 +116,13 @@ paths:
             type: string
           required: true
           description: String ID of the item to reactivate.
+      requestBody:
+        description: Optional description in *Markdown* #fix
+        required: true
+        content:
+          application/json:
+            #schema:
+              #$ref: '#/components/schemas/Pet' #fix
       responses:
         '200':
           description: A JSON object of reactivated Inventory Item.
@@ -127,7 +149,11 @@ paths:
           description: Could not update flag.
         default:
           description: Unexpected error
-  /inventory/site/{itemId}
+  /inventory/amount:
+    post:
+      summary: Updates the amount of given item id to specified site.
+      responses:
+  /inventory/site/{itemId}:
     get:
       summary: Returns the given item amount for all sites.
       parameters:
@@ -139,7 +165,7 @@ paths:
           description:
       responses:
   # Admin path
-  /inventory/add/{itemId}
+  /inventory/add/{itemId}:
     post:
       summary: Admin function that creates a new item to a specific site.
       parameters:
@@ -150,7 +176,7 @@ paths:
           required: true
           description: String ID of the item to create for a specific site.
       responses:
-  /site/{siteId}
+  /site/{siteId}:
     get:
       summary: Returns site specific information for given site id.
       parameters:
@@ -183,13 +209,13 @@ paths:
           description: A site with the specified ID was not found.
         default:
           description: Unexpected error
-  /site/create/
+  /site/create:
     post:
       summary: Admin function that creates a new site.
       responses:
         '201':
           description: Created
-  /site/delete/{siteId}
+  /site/delete/{siteId}:
     post:
       summary: Deletes the given site by enabling the deleted flag on. API usage of site is disabled until site deleted flag is turned off.
       parameters:
@@ -225,7 +251,7 @@ paths:
           description: Could not update flag.
         default:
           description: Unexpected error
-  /site/reactivate/{siteId}
+  /site/reactivate/{siteId}:
     post:
       summary: Turns deleted flag off and reactivates the given site.
       parameters:
@@ -261,7 +287,4 @@ paths:
           description: Could not update flag.
         default:
           description: Unexpected error
-  /site/amount
-    post:
-      summary: Updates the amount of given item id to specified site.
-      responses:
+          
