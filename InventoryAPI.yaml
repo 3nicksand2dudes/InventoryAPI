@@ -153,29 +153,10 @@ paths:
             #schema:
               #$ref: '#/components/schemas/Pet' #fix
       responses:
-#        '200':
-#          description: A JSON object of deleted Inventory Item.
-#          content:
-#            application/json:
-#            schema:
-#              type: object
-#              properties:
-#                amount:
-#                  type: string
-#                  example: 86
-#                deleted:
-#                  type: bool
-#                  example: true
-#                modelNumber:
-#                  type: string
-#                  example: H2
-#                site:
-#                  type: string
-#                  example: FIN_H1
         '400':
-          description: #fix
+          description: No entry with that model number or site exist.
         '500':
-          description: #fix
+          description: Could not update inventory amount.
   /inventory/site/{itemId}:
     get:
       summary: Returns the given item amount for all sites.
