@@ -152,7 +152,37 @@ paths:
   /inventory/amount:
     post:
       summary: Updates the amount of given item id to specified site.
+      requestBody:
+        description: Optional description in *Markdown* #fix
+        required: true
+        content:
+          application/json:
+            #schema:
+              #$ref: '#/components/schemas/Pet' #fix
       responses:
+#        '200':
+#          description: A JSON object of deleted Inventory Item.
+#          content:
+#            application/json:
+#            schema:
+#              type: object
+#              properties:
+#                amount:
+#                  type: string
+#                  example: 86
+#                deleted:
+#                  type: bool
+#                  example: true
+#                modelNumber:
+#                  type: string
+#                  example: H2
+#                site:
+#                  type: string
+#                  example: FIN_H1
+        '400':
+          description: #fix
+        '500':
+          description: #fix
   /inventory/site/{itemId}:
     get:
       summary: Returns the given item amount for all sites.
@@ -287,4 +317,3 @@ paths:
           description: Could not update flag.
         default:
           description: Unexpected error
-          
