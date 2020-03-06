@@ -75,7 +75,7 @@ paths:
               #$ref: '#/components/schemas/Pet' #fix
       responses:
         '200':
-          description: A JSON object of deleted Inventory Item.
+          description: Deleted Inventory Item.
           content:
             application/json:
             schema:
@@ -118,7 +118,7 @@ paths:
               #$ref: '#/components/schemas/Pet' #fix
       responses:
         '200':
-          description: A JSON object of reactivated Inventory Item.
+          description: Reactivated Inventory Item.
           content:
             application/json:
             schema:
@@ -153,6 +153,8 @@ paths:
             #schema:
               #$ref: '#/components/schemas/Pet' #fix
       responses:
+        '200':
+          description: Item amount updated.
         '400':
           description: No entry with that model number or site exist.
         '500':
