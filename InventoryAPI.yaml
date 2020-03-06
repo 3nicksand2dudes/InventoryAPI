@@ -43,16 +43,9 @@ paths:
           description: An item with the specified ID was not found.
         default:
           description: Unexpected error
-  /inventory/create/{itemId}:
+  /inventory/create:
     post:
       summary: Creates a new Inventory item for all sites.
-      parameters:
-        - in: path
-          name: itemId
-          schema:
-            type: string
-          required: true
-          description: String ID for item to create.
       requestBody:
         description: Optional description in *Markdown* #fix
         required: true
