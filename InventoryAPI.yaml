@@ -188,7 +188,7 @@ paths:
       summary: Admin function that creates a new site.
       responses:
         '201':
-          descrption: Created
+          description: Created
   /site/delete/{siteId}
     post:
       summary: Deletes the given site by enabling the deleted flag on. API usage of site is disabled until site deleted flag is turned off.
