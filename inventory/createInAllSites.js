@@ -17,7 +17,7 @@ module.exports.createInAllSites = (event, context, callback) => {
         console.error('Validation Failed')
         callback(null, {
             statusCode: 400,
-            headers: { 'Content-Type': 'text/plain' },
+            headers: {  'Access-Control-Allow-Origin': '*', 'Content-Type': 'text/plain' },
             body: '"modelNumber" must be a string',
         })
         return
@@ -36,7 +36,7 @@ module.exports.createInAllSites = (event, context, callback) => {
             console.error(err)
             callback(null, {
               statusCode: err.statusCode || 500,
-              headers: { 'Content-Type': 'text/plain' },
+              headers: {  'Access-Control-Allow-Origin': '*', 'Content-Type': 'text/plain' },
               body: 'Couldn\'t create the inventory item.',
             })
             return
@@ -45,7 +45,7 @@ module.exports.createInAllSites = (event, context, callback) => {
         }else if(result.Items.length < 1){
             callback(null, {
               statusCode: err.statusCode || 500,
-              headers: { 'Content-Type': 'text/plain' },
+              headers: {  'Access-Control-Allow-Origin': '*', 'Content-Type': 'text/plain' },
               body: 'Couldn\'t create the inventory item. No sites exists',
             })
             return
@@ -101,7 +101,7 @@ module.exports.createInAllSites = (event, context, callback) => {
             // Send response to user that 
             const response = {
                     statusCode: 201,
-                    headers: { 'Content-Type': 'text/plain' },
+                    headers: {  'Access-Control-Allow-Origin': '*', 'Content-Type': 'text/plain' },
                     body: 'Items have been created to every site',
                 }
             callback(null, response)

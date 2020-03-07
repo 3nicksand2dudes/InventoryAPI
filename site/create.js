@@ -25,7 +25,7 @@ module.exports.create = (event, context, callback) => {
         console.error('Validation Failed')
         callback(null, {
           statusCode: 400,
-          headers: { 'Content-Type': 'text/plain' },
+          headers: {  'Access-Control-Allow-Origin': '*', 'Content-Type': 'text/plain' },
           body: '"siteName" must be a string',
         })
         return
@@ -35,7 +35,7 @@ module.exports.create = (event, context, callback) => {
         console.error('Validation Failed')
         callback(null, {
           statusCode: 400,
-          headers: { 'Content-Type': 'text/plain' },
+          headers: {  'Access-Control-Allow-Origin': '*', 'Content-Type': 'text/plain' },
           body: '"address" must be a string',
         })
         return
@@ -45,7 +45,7 @@ module.exports.create = (event, context, callback) => {
       console.error('Validation Failed')
       callback(null, {
           statusCode: 400,
-          headers: { 'Content-Type': 'text/plain' },
+          headers: {  'Access-Control-Allow-Origin': '*', 'Content-Type': 'text/plain' },
           body: '"id" must be a string',
       })
       return
@@ -71,7 +71,7 @@ module.exports.create = (event, context, callback) => {
           console.error(error)
           callback(null, {
             statusCode: error.statusCode || 500,
-            headers: { 'Content-Type': 'text/plain' },
+            headers: {  'Access-Control-Allow-Origin': '*', 'Content-Type': 'text/plain' },
             body: 'Couldn\'t create the site. SiteId already exsits',
           })
           return
@@ -80,7 +80,7 @@ module.exports.create = (event, context, callback) => {
           console.error(error)
           callback(null, {
             statusCode: error.statusCode || 500,
-            headers: { 'Content-Type': 'text/plain' },
+            headers: {  'Access-Control-Allow-Origin': '*', 'Content-Type': 'text/plain' },
             body: 'Couldn\'t create the site.',
           })
           return
@@ -90,6 +90,10 @@ module.exports.create = (event, context, callback) => {
       // create a response
       const response = {
         statusCode: 201,
+        headers: { 
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json' 
+        },
         body: JSON.stringify(params.Item),
       }
       callback(null, response)

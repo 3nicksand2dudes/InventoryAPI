@@ -50,7 +50,7 @@ function updateDeleted(event, context, callback, deletedStatus){
                 console.error(error)
                 callback(null, {
                 statusCode: 400,
-                headers: { 'Content-Type': 'text/plain' },
+                headers: { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'text/plain' },
                 body: 'Couldn\'t update the site. Site does not exist',
                 })
                 return
@@ -58,7 +58,7 @@ function updateDeleted(event, context, callback, deletedStatus){
                 console.error(error)
                 callback(null, {
                 statusCode: 500,
-                headers: { 'Content-Type': 'text/plain' },
+                headers: { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'text/plain' },
                 body: 'Couldn\'t update the site.',
                 })
                 return
@@ -67,6 +67,10 @@ function updateDeleted(event, context, callback, deletedStatus){
 
         const response = {
             statusCode: 200,
+            headers: { 
+                'Access-Control-Allow-Origin': '*',
+                'Content-Type': 'application/json' 
+            },
             body: JSON.stringify(result.Attributes),
         }
         callback(null, response)    

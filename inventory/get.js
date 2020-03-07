@@ -37,7 +37,10 @@ module.exports.get = (event, context, callback) => {
         console.error(error)
         callback(null, {
           statusCode: error.statusCode || 500,
-          headers: { 'Content-Type': 'text/plain' },
+          headers: { 
+            'Access-Control-Allow-Origin': '*',
+            'Content-Type': 'text/plain' 
+          },
           body: 'Couldn\'t fetch the inventory item.',
         })
         return
@@ -46,7 +49,10 @@ module.exports.get = (event, context, callback) => {
       else if(result.Items.length < 1){
         callback(null, {
           statusCode: 404 ,
-          headers: { 'Content-Type': 'text/plain' },
+          headers: { 
+            'Access-Control-Allow-Origin': '*',
+            'Content-Type': 'text/plain' 
+          },
           body: 'Malformatted modelNumber',
         })
         return
@@ -65,7 +71,10 @@ module.exports.get = (event, context, callback) => {
         // create a response  
         const response = {
           statusCode: 200,
-          headers: { 'Content-Type': 'application/json' },
+          headers: { 
+            'Access-Control-Allow-Origin': '*',
+            'Content-Type': 'application/json' 
+          },
           body: JSON.stringify(resObj)
         }
         callback(null, response)

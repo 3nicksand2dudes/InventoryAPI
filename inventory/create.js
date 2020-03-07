@@ -25,7 +25,7 @@ module.exports.create = (event, context, callback) => {
       console.error('Validation Failed')
       callback(null, {
         statusCode: 400,
-        headers: { 'Content-Type': 'text/plain' },
+        headers: {  'Access-Control-Allow-Origin': '*', 'Content-Type': 'text/plain' },
         body: '"amount" must be a number',
       })
       return
@@ -35,7 +35,7 @@ module.exports.create = (event, context, callback) => {
       console.error('Validation Failed')
       callback(null, {
         statusCode: 400,
-        headers: { 'Content-Type': 'text/plain' },
+        headers: {  'Access-Control-Allow-Origin': '*', 'Content-Type': 'text/plain' },
         body: '"modelNumber" must be a string',
       })
       return
@@ -48,7 +48,7 @@ module.exports.create = (event, context, callback) => {
       console.error('Validation Failed')
       callback(null, {
         statusCode: 400,
-        headers: { 'Content-Type': 'text/plain' },
+        headers: {  'Access-Control-Allow-Origin': '*', 'Content-Type': 'text/plain' },
         body: '"siteId" must be a string',
       })
       return
@@ -86,7 +86,7 @@ module.exports.create = (event, context, callback) => {
         console.error(err)
         callback(null, {
           statusCode: err.statusCode || 500,
-          headers: { 'Content-Type': 'text/plain' },
+          headers: {  'Access-Control-Allow-Origin': '*', 'Content-Type': 'text/plain' },
           body: 'Couldn\'t create the inventory item.',
         })
         return
@@ -95,7 +95,7 @@ module.exports.create = (event, context, callback) => {
         console.error(err)
         callback(null, {
           statusCode: 403,
-          headers: { 'Content-Type': 'text/plain' },
+          headers: {  'Access-Control-Allow-Origin': '*', 'Content-Type': 'text/plain' },
           body: 'Couldn\'t create the inventory item. Entry exists',
         })
         return
@@ -108,7 +108,7 @@ module.exports.create = (event, context, callback) => {
             console.error(error)
             callback(null, {
               statusCode: error.statusCode || 500,
-              headers: { 'Content-Type': 'text/plain' },
+              headers: {  'Access-Control-Allow-Origin': '*', 'Content-Type': 'text/plain' },
               body: 'Couldn\'t create the inventory item.',
             })
             return
@@ -117,6 +117,10 @@ module.exports.create = (event, context, callback) => {
           // create a response
           const response = {
             statusCode: 201,
+            headers: { 
+              'Access-Control-Allow-Origin': '*',
+              'Content-Type': 'application/json' 
+            },
             body: JSON.stringify(params.Item),
           }
           callback(null, response)

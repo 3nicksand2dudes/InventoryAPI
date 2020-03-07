@@ -23,7 +23,7 @@ module.exports.updateAmount = (event, context, callback) => {
         console.error('Validation Failed')
         callback(null, {
           statusCode: 400,
-          headers: { 'Content-Type': 'text/plain' },
+          headers: { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'text/plain' },
           body: '"amount" must be a number',
         })
         return
@@ -31,7 +31,7 @@ module.exports.updateAmount = (event, context, callback) => {
         console.error('Validation Failed')
         callback(null, {
           statusCode: 400,
-          headers: { 'Content-Type': 'text/plain' },
+          headers: { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'text/plain' },
           body: '"type" must be "-" or "+" to indicate decrease or increase.',
         })
         return
@@ -57,7 +57,7 @@ module.exports.updateAmount = (event, context, callback) => {
             console.error(err)
             callback(null, {
               statusCode: 500,
-              headers: { 'Content-Type': 'text/plain' },
+              headers: { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'text/plain' },
               body: 'Couldn\'t update the inventory item.',
             })
             return
@@ -66,7 +66,7 @@ module.exports.updateAmount = (event, context, callback) => {
         }else if(res.Items.length < 1){
             callback(null, {
               statusCode: 400,
-              headers: { 'Content-Type': 'text/plain' },
+              headers: { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'text/plain' },
               body: 'Couldn\'t update the inventory item. No entry with that modelNumber and site exist',
             })
             return
@@ -94,7 +94,7 @@ module.exports.updateAmount = (event, context, callback) => {
                     console.error(error)
                     callback(null, {
                         statusCode: error.statusCode || 500,
-                        headers: { 'Content-Type': 'text/plain' },
+                        headers: { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'text/plain' },
                         body: 'Couldn\'t update the inventory.',
                     })
                     return
@@ -109,6 +109,10 @@ module.exports.updateAmount = (event, context, callback) => {
 
                 const response = {
                     statusCode: 200,
+                    headers: { 
+                        'Access-Control-Allow-Origin': '*',
+                        'Content-Type': 'application/json' 
+                    },
                     body: JSON.stringify(responseBody),
                 }
                 callback(null, response)    

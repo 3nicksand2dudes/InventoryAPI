@@ -75,7 +75,7 @@ functions:
       - http:
           path: site/{id}
           method: get
-          cors: true
+          cors: true 
           private: true
 
   createSite:
