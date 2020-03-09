@@ -1,4 +1,3 @@
-#WIP (Work In Progress)
 openapi: 3.0.2
 info:
   title: Inventory API
@@ -50,8 +49,8 @@ paths:
         required: true
         content:
           application/json:
-            #schema:
-              #$ref: '#/components/schemas/Create' #fix
+            schema:
+              $ref: '#/components/schemas/CreateItem'
       responses:
         '201':
           description: Created
@@ -69,8 +68,8 @@ paths:
         required: true
         content:
           application/json:
-            #schema:
-              #$ref: '#/components/schemas/Delete' #fix
+            schema:
+              $ref: '#/components/schemas/DeleteItem'
       responses:
         '200':
           description: Deleted Inventory Item.
@@ -111,8 +110,8 @@ paths:
         required: true
         content:
           application/json:
-            #schema:
-              #$ref: '#/schemas/Reactivate' #fix
+            schema:
+              $ref: '#/schemas/ReactivateItem'
       responses:
         '200':
           description: Reactivated Inventory Item.
@@ -146,8 +145,8 @@ paths:
         required: true
         content:
           application/json:
-            #schema:
-              #$ref: '#/schemas/Update' 
+            schema:
+              $ref: '#/schemas/InventoryAmount'
       responses:
         '200':
           description: Item amount updated.
@@ -166,8 +165,7 @@ paths:
           required: true
           description:
       responses:
-  # Admin path
-  /inventory/add/{itemId}:
+  /inventory/add/{itemId}: # Admin path
     post:
       summary: Admin function that creates a new item to a specific site.
       parameters:
@@ -182,7 +180,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/schemas/Add'
+              $ref: '#/schemas/AdminAddItem' #5
       responses:
   /site/{siteId}:
     get:
@@ -217,12 +215,24 @@ paths:
           description: A site with the specified ID was not found.
         default:
           description: Unexpected error
-  /site/create:
+  /site/add: # Admin function
     post:
       summary: Admin function that creates a new site.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/schemas/CreateSite'
       responses:
         '201':
-          description: Created
+          description: Site created.
+        '400'
+          description: Bad Request.
+        '403'
+          description: Forbidden.
+        '500'
+          description: Internal Server Error.
   /site/delete/{siteId}:
     post:
       summary: Deletes the given site by enabling the deleted flag on. API usage of site is disabled until site deleted flag is turned off.
