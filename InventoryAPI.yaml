@@ -227,11 +227,11 @@ paths:
       responses:
         '201':
           description: Site created.
-        '400'
+        '400':
           description: Bad Request.
-        '403'
+        '403':
           description: Forbidden.
-        '500'
+        '500':
           description: Internal Server Error.
   /site/delete/{siteId}:
     post:
