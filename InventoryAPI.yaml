@@ -47,12 +47,11 @@ paths:
     post:
       summary: Creates a new Inventory item for all sites.
       requestBody:
-        description: Optional description in *Markdown* #fix
         required: true
         content:
           application/json:
             #schema:
-              #$ref: '#/components/schemas/Pet' #fix
+              #$ref: '#/components/schemas/Create' #fix
       responses:
         '201':
           description: Created
@@ -67,12 +66,11 @@ paths:
           required: true
           description: String ID of the item to delete.
       requestBody:
-        description: Optional description in *Markdown* #fix
         required: true
         content:
           application/json:
             #schema:
-              #$ref: '#/components/schemas/Pet' #fix
+              #$ref: '#/components/schemas/Delete' #fix
       responses:
         '200':
           description: Deleted Inventory Item.
@@ -110,12 +108,11 @@ paths:
           required: true
           description: String ID of the item to reactivate.
       requestBody:
-        description: Optional description in *Markdown* #fix
         required: true
         content:
           application/json:
             #schema:
-              #$ref: '#/components/schemas/Pet' #fix
+              #$ref: '#/schemas/Reactivate' #fix
       responses:
         '200':
           description: Reactivated Inventory Item.
@@ -146,12 +143,11 @@ paths:
     post:
       summary: Updates the amount of given item id to specified site.
       requestBody:
-        description: Optional description in *Markdown* #fix
         required: true
         content:
           application/json:
             #schema:
-              #$ref: '#/components/schemas/Pet' #fix
+              #$ref: '#/schemas/Update' 
       responses:
         '200':
           description: Item amount updated.
@@ -181,6 +177,12 @@ paths:
             type: string
           required: true
           description: String ID of the item to create for a specific site.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/schemas/Add'
       responses:
   /site/{siteId}:
     get:

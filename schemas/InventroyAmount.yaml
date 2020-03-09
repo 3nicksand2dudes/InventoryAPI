@@ -1,0 +1,6 @@
+type: "//rec"
+required:
+  modelNumber: "//str"
+  site: "//str"
+  type: "//str"
+  amount: "//int"

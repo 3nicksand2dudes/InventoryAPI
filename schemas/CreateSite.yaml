@@ -1,0 +1,5 @@
+type: "//rec"
+required:
+  siteID: "//str"
+  address: "//str"
+  siteName: "//str"
